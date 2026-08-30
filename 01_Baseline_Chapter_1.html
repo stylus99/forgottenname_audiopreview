@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baseline — Chapter 1 — The Forgotten Name</title>
+<style>
+:root{--bg:#0d0f13;--panel:#16191f;--line:#292e38;--text:#f0f2f5;--muted:#aeb5c0;--accent:#d1c19a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.64}
+.wrap{max-width:900px;margin:auto;padding:28px 18px 80px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+h1{font-size:1.8rem;margin:0} h2{color:var(--accent);font-size:1.15rem;font-weight:normal;margin:.35rem 0 1.2rem}
+.controls{position:sticky;top:0;background:rgba(22,25,31,.97);padding:12px 0;z-index:3}
+button{background:#252a34;color:white;border:1px solid #3a414e;border-radius:9px;padding:10px 13px;margin:4px;cursor:pointer}
+button.primary{background:#493f2f}
+select,input{width:100%;margin:5px 0 12px}
+select{background:#0e1116;color:white;border:1px solid var(--line);padding:9px;border-radius:7px}
+.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.status{color:var(--accent);margin:8px 0}
+.small{color:var(--muted);font-size:.9rem}
+.text{white-space:pre-wrap;margin-top:24px}
+.progress{height:5px;background:#252a34;border-radius:5px;overflow:hidden;margin-top:10px}
+.bar{height:100%;width:0;background:#9e9377}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>THE FORGOTTEN NAME</h1>
+<h2>Baseline — Chapter 1 · By CL HARRIS</h2>
+<div class="controls">
+<div class="grid">
+<div><label>Voice</label><select id="voice"></select></div>
+<div><label>Rate <span id="rateVal">0.88</span></label><input id="rate" type="range" min="0.72" max="1.05" step="0.01" value="0.88"></div>
+<div><label>Pitch <span id="pitchVal">0.90</span></label><input id="pitch" type="range" min="0.75" max="1.05" step="0.01" value="0.90"></div>
+</div>
+<button class="primary" onclick="play()">▶ Play</button>
+<button onclick="toggle()">⏯ Pause / Resume</button>
+<button onclick="stopSpeech()">■ Stop</button>
+<button onclick="restart()">↺ Restart</button>
+<div class="status" id="status">Preferred: Google UK English Female — en-GB</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="small">Narration profile: intimate, restrained, measured; no suspense-style clue emphasis. Playback position is saved on this device.</div>
+</div>
+<div class="text">Chapter 1
+
+The dead man had left three versions of his life in the rented rooms, and only one of them had ever 
+paid rent. 
+Sere Arden stood in the narrow hall with her coat folded over one arm and watched the property 
+officer unlock the second bedroom. At forty, she had learned that overheated buildings rewarded anyone 
+patient enough to carry a coat rather than wear it. He had called it a storage room. The rental inventory 
+called it a nursery. A photograph from the rental office showed a desk beneath the window and no room 
+for either the cot or the boxes now stacked against the wall. 
+“You see why we stopped,” he said. 
+“I see why you called.” 
+The distinction made him glance at her. People wanted an expert to be surprised with them. 
+Surprise felt like agreement. Sere preferred to begin with what a thing was before deciding what it meant. 
+The man had died in a railway accident six weeks earlier. His body had been identified quickly and 
+correctly. The difficulty began afterward, when two families claimed him under different surnames, two 
+employers produced overlapping contracts, and the civil record presented a third history that matched 
+the fingerprints but little else. 
+She put on gloves and entered the room. 
+The radiator knocked behind the wall. A folded transit leaflet had been wedged beneath its valve to 
+catch a slow leak. Sere photographed it before the officer could remove it. The repair said nothing about 
+identity, but it established a household habit: someone had noticed the water and returned often enough 
+to replace the paper. 
+Nothing announced itself as evidence. That was ordinary. Evidence became visible through 
+disagreement: dust interrupted by a moved object, wear on one shoe but not its pair, a kitchen stocked 
+for habits no witness remembered. 
+Inside the first box were tax papers, a child&#x27;s drawings, and unopened letters addressed to the 
+surname used by neither family. 
+“Forgery?” the officer asked. 
+“Possibly. Or a forwarding error. Or a genuine name in the wrong place.” 
+“There are fourteen years of them.” 
+“Then it is a persistent error.” 
+He smiled as if she had made a joke. She had not. 
+On the desk she arranged the first chain: physical possession, dated correspondence, financial 
+consequence, witness access. A document did not become true because it was old. It became useful 
+when its history could be accounted for. 
+The property officer leaned against the doorframe. “Which one was he?” 
+“That is not the first question.” 
+“It seems like the only question.” 
+“The first question is which claims can have belonged to the same person.” 
+“And if they can&#x27;t?” 
+“Then we find the break.” 
+A false record depended on substitution somewhere. A mistaken witness carried a boundary 
+between observation and assumption. Even deliberate identity fraud left practical seams because a 
+person could lie in an interview but could not easily persuade fourteen years of rent, wages, 
+prescriptions, travel, and other people&#x27;s expectations to lie in the same direction. 
+At the back of the wardrobe she found two work jackets. One bore the first family&#x27;s surname and 
+pale grains of industrial abrasive at the cuffs. The other, under plastic, bore the second surname and the 
+clean compression marks of long storage. The officer had treated them as confirmation of two lives. Sere 
+treated their wear as evidence of one present life and one retained account of it. 
+By noon, the room no longer contained three men. It contained one man who had continued 
+receiving correspondence under an early legal identity, worked under a later certified identity, and 
+allowed one part of his family to believe the transition had never occurred. 
+The pattern was not complete. It was coherent. 
+She tested the part most likely to break it. The first family&#x27;s photographs showed the man wearing 
+the old jacket after his certified change. Factory logs placed him at work under the new surname the 
+same week. Then she noticed the jacket&#x27;s missing badge and a photograph taken beside a half-stripped 
+fence. It had stopped being work clothing and become the sort of durable garment a person kept for 
+painting walls or clearing a garden. 
+The officer returned while she compared the image with a hardware receipt. 
+“Access confirms the later name,” he said. “Every shift.” 
+“Good.” 
+“Doesn&#x27;t that make the photograph false?” 
+“It makes your description of the jacket too narrow.” She showed him the cuff and absent badge. 
+“An object can outlive the role we assign to it.” 
+He studied the image. “You get all that from a coat?” 
+“I get a question from a coat. The receipt and the fence answer part of it.” 
+The man&#x27;s wallet had contained both identities: a current credential under the later surname and an 
+expired union card under the earlier one. Neither had been concealed. Beside them was a handwritten list 
+reminding him to call relatives from both families. 
+The facts did not become sentimental because they described divided loyalty. They became more 
+exact. 
+She sealed the letters individually and stood alone among the versions of the man&#x27;s life. The records 
+had not failed. They had been read as rivals when they were, in fact, consecutive. 
+* * * 
+The second family met her that afternoon in a municipal interview room. A woman of sixty sat 
+beside a man half her age. Mother and son, according to the appointment sheet. Neither had agreed to 
+provide a relationship label for the deceased. 
+Sere did not begin with names. 
+She placed copies of the jacket photographs on the table and asked who had repaired the torn cuff. 
+“I did,” the older woman said before caution organized her face. “He wouldn&#x27;t throw anything 
+away.” 
+The younger man turned toward her. “You said you&#x27;d never seen that coat.” 
+“I said I didn&#x27;t know why he kept it.” 
+Not a factual contradiction. A defensive one. 
+The woman explained that the dead man had changed his surname after leaving an abusive 
+household. He kept the old identity active for a pension claim he feared would be challenged if the 
+histories were joined. The first family knew him by the earlier name and believed the later one 
+fraudulent. The second knew the later name and believed the earlier one an attempt to seize his estate. 
+“He should have told us,” the younger man said. 
+The older woman looked at the table. “He thought paper was safer than people.” 
+Sere&#x27;s pen stopped above the date field. She marked the sentence as testimony, not truth, and asked 
+for dates. 
+Dates permitted sequence. 
+They worked through the move, the certification, the first contract, the last visit under the old 
+name. The woman&#x27;s account matched the letters&#x27; wear and the jackets&#x27; use. The son&#x27;s anger matched the 
+financial dispute without invalidating his recollection. 
+“So which family gets him?” he asked. 
+“That is a legal question.” 
+“You know what I mean.” 
+She did. “Both knew him. Neither knew all of him.” 
+He waited for something gentler. Consolation offered as expertise would be another kind of false 
+record. 
+Instead she showed them the sequence. The older identity had not been replaced by an invented 
+man. The later identity had not erased the earlier life. The two could be certified as continuous, subject 
+to independent review. 
+The older woman&#x27;s shoulders lowered by a degree. 
+Before they left, the younger man asked to see the original letters. Sere explained the custody 
+restriction and offered supervised access after imaging. 
+“More procedure,” he said. 
+“Yes.” 
+“You keep turning him into a sequence because a sequence can&#x27;t disappoint you.” 
+The older woman said his name in warning, but he continued. “You asked when he moved, when 
+he signed, when he stopped visiting. You haven&#x27;t asked what it cost him to answer to two names.” 
+“I cannot certify cost from documents.” 
+“Then the part you can certify is the part that hurt him least.” 
+Sere felt the urge to defend the boundary and recognized that doing so immediately would prove his 
+complaint about her method, if not his conclusion. She set down her pen. 
+“What did it cost him?” she asked. 
+He described his father rehearsing introductions before family gatherings, choosing which relatives 
+could hear which name, and once sitting in a parked vehicle for twenty minutes because both families 
+had arrived at the same market. None altered the continuity finding. All changed the account of what 
+continuity had required. 
+Sere added a section on lived consequence, clearly attributed and separate from the certification 
+chain. 
+The older woman watched her. “You make room after you&#x27;ve measured whether the room is safe.” 
+It was not praise. Nor wholly criticism. 
+“Usually,” Sere said. 
+“People notice the measuring.” 
+The observation stayed with her because she could not dismiss it as resistance to an unfavorable 
+finding. 
+When they were gone, Sere noted her own failure to explain the process before it became another 
+injury. Procedure could preserve fairness and still feel like suspicion. 
+She arranged for supervised access to the letters the next morning. 
+* * * 
+At her workspace, Sere built the final report from sources that disagreed for intelligible reasons. 
+The office was quiet after hours. Beyond the glass, cleaners moved through the corridor, briefly 
+bright beneath each automatic light. On her wall, three narrow shelves held closed case files and no 
+personal photographs. She had never decided this was a principle. It had simply become true through 
+repetition. 
+She attached the employment logs, witness qualifications, unresolved estate dispute, and limits of 
+her conclusion. 
+Identity reconstruction was sometimes described as recovery, as though a person lay intact beneath 
+a mess of records waiting to be uncovered. The description was comforting and wrong. Her work was 
+closer to joining a fractured load-bearing structure: every connection had to bear weight, and the repair 
+had to show where it might fail. 
+At nine seventeen, the institutional review system returned provisional acceptance: continuity 
+supported; adversarial review available; legal effects stayed pending confirmation. 
+The property officer sent a message a minute later. 
+So there was one man after all. 
+Sere looked at the sentence before answering. 
+There was always one man. We established how the records belonged to him. 
+She watched the status change from disputed to reviewable. The system made no claim that the 
+man was solved or whole. Sere respected its restraint. 
+As she shut down her terminal, her hand returned to the report controls to check the conclusion 
+once more. She stopped before opening it. 
+Uncertainty had narrowed under pressure. Contradictions had taken their places in time. A life 
+divided by paperwork and grief could again be acted upon as one continuous life. 
+Most cases yielded if the evidence was made complete enough. 
+She believed this not as comfort but as a working rule, tested against years of fractured records and 
+unreliable recollection. People misplaced facts. Systems repeated mistakes. Families protected 
+incompatible accounts of the same life. Patient comparison usually exposed the point at which their 
+stories had divided. 
+The rule had failed her once. That failure remained closed in an older file and in the private 
+discipline with which she checked every conclusion twice. 
+Tonight, the rule had held. 
+She locked the file away and left the office in order.</div>
+</div></div>
+<script>
+const rawText = "Chapter 1\n\nThe dead man had left three versions of his life in the rented rooms, and only one of them had ever \npaid rent. \nSere Arden stood in the narrow hall with her coat folded over one arm and watched the property \nofficer unlock the second bedroom. At forty, she had learned that overheated buildings rewarded anyone \npatient enough to carry a coat rather than wear it. He had called it a storage room. The rental inventory \ncalled it a nursery. A photograph from the rental office showed a desk beneath the window and no room \nfor either the cot or the boxes now stacked against the wall. \n“You see why we stopped,” he said. \n“I see why you called.” \nThe distinction made him glance at her. People wanted an expert to be surprised with them. \nSurprise felt like agreement. Sere preferred to begin with what a thing was before deciding what it meant. \nThe man had died in a railway accident six weeks earlier. His body had been identified quickly and \ncorrectly. The difficulty began afterward, when two families claimed him under different surnames, two \nemployers produced overlapping contracts, and the civil record presented a third history that matched \nthe fingerprints but little else. \nShe put on gloves and entered the room. \nThe radiator knocked behind the wall. A folded transit leaflet had been wedged beneath its valve to \ncatch a slow leak. Sere photographed it before the officer could remove it. The repair said nothing about \nidentity, but it established a household habit: someone had noticed the water and returned often enough \nto replace the paper. \nNothing announced itself as evidence. That was ordinary. Evidence became visible through \ndisagreement: dust interrupted by a moved object, wear on one shoe but not its pair, a kitchen stocked \nfor habits no witness remembered. \nInside the first box were tax papers, a child's drawings, and unopened letters addressed to the \nsurname used by neither family. \n“Forgery?” the officer asked. \n“Possibly. Or a forwarding error. Or a genuine name in the wrong place.” \n“There are fourteen years of them.” \n“Then it is a persistent error.” \nHe smiled as if she had made a joke. She had not. \nOn the desk she arranged the first chain: physical possession, dated correspondence, financial \nconsequence, witness access. A document did not become true because it was old. It became useful \nwhen its history could be accounted for. \nThe property officer leaned against the doorframe. “Which one was he?” \n“That is not the first question.” \n“It seems like the only question.” \n“The first question is which claims can have belonged to the same person.” \n“And if they can't?” \n“Then we find the break.” \nA false record depended on substitution somewhere. A mistaken witness carried a boundary \nbetween observation and assumption. Even deliberate identity fraud left practical seams because a \nperson could lie in an interview but could not easily persuade fourteen years of rent, wages, \nprescriptions, travel, and other people's expectations to lie in the same direction. \nAt the back of the wardrobe she found two work jackets. One bore the first family's surname and \npale grains of industrial abrasive at the cuffs. The other, under plastic, bore the second surname and the \nclean compression marks of long storage. The officer had treated them as confirmation of two lives. Sere \ntreated their wear as evidence of one present life and one retained account of it. \nBy noon, the room no longer contained three men. It contained one man who had continued \nreceiving correspondence under an early legal identity, worked under a later certified identity, and \nallowed one part of his family to believe the transition had never occurred. \nThe pattern was not complete. It was coherent. \nShe tested the part most likely to break it. The first family's photographs showed the man wearing \nthe old jacket after his certified change. Factory logs placed him at work under the new surname the \nsame week. Then she noticed the jacket's missing badge and a photograph taken beside a half-stripped \nfence. It had stopped being work clothing and become the sort of durable garment a person kept for \npainting walls or clearing a garden. \nThe officer returned while she compared the image with a hardware receipt. \n“Access confirms the later name,” he said. “Every shift.” \n“Good.” \n“Doesn't that make the photograph false?” \n“It makes your description of the jacket too narrow.” She showed him the cuff and absent badge. \n“An object can outlive the role we assign to it.” \nHe studied the image. “You get all that from a coat?” \n“I get a question from a coat. The receipt and the fence answer part of it.” \nThe man's wallet had contained both identities: a current credential under the later surname and an \nexpired union card under the earlier one. Neither had been concealed. Beside them was a handwritten list \nreminding him to call relatives from both families. \nThe facts did not become sentimental because they described divided loyalty. They became more \nexact. \nShe sealed the letters individually and stood alone among the versions of the man's life. The records \nhad not failed. They had been read as rivals when they were, in fact, consecutive. \n* * * \nThe second family met her that afternoon in a municipal interview room. A woman of sixty sat \nbeside a man half her age. Mother and son, according to the appointment sheet. Neither had agreed to \nprovide a relationship label for the deceased. \nSere did not begin with names. \nShe placed copies of the jacket photographs on the table and asked who had repaired the torn cuff. \n“I did,” the older woman said before caution organized her face. “He wouldn't throw anything \naway.” \nThe younger man turned toward her. “You said you'd never seen that coat.” \n“I said I didn't know why he kept it.” \nNot a factual contradiction. A defensive one. \nThe woman explained that the dead man had changed his surname after leaving an abusive \nhousehold. He kept the old identity active for a pension claim he feared would be challenged if the \nhistories were joined. The first family knew him by the earlier name and believed the later one \nfraudulent. The second knew the later name and believed the earlier one an attempt to seize his estate. \n“He should have told us,” the younger man said. \nThe older woman looked at the table. “He thought paper was safer than people.” \nSere's pen stopped above the date field. She marked the sentence as testimony, not truth, and asked \nfor dates. \nDates permitted sequence. \nThey worked through the move, the certification, the first contract, the last visit under the old \nname. The woman's account matched the letters' wear and the jackets' use. The son's anger matched the \nfinancial dispute without invalidating his recollection. \n“So which family gets him?” he asked. \n“That is a legal question.” \n“You know what I mean.” \nShe did. “Both knew him. Neither knew all of him.” \nHe waited for something gentler. Consolation offered as expertise would be another kind of false \nrecord. \nInstead she showed them the sequence. The older identity had not been replaced by an invented \nman. The later identity had not erased the earlier life. The two could be certified as continuous, subject \nto independent review. \nThe older woman's shoulders lowered by a degree. \nBefore they left, the younger man asked to see the original letters. Sere explained the custody \nrestriction and offered supervised access after imaging. \n“More procedure,” he said. \n“Yes.” \n“You keep turning him into a sequence because a sequence can't disappoint you.” \nThe older woman said his name in warning, but he continued. “You asked when he moved, when \nhe signed, when he stopped visiting. You haven't asked what it cost him to answer to two names.” \n“I cannot certify cost from documents.” \n“Then the part you can certify is the part that hurt him least.” \nSere felt the urge to defend the boundary and recognized that doing so immediately would prove his \ncomplaint about her method, if not his conclusion. She set down her pen. \n“What did it cost him?” she asked. \nHe described his father rehearsing introductions before family gatherings, choosing which relatives \ncould hear which name, and once sitting in a parked vehicle for twenty minutes because both families \nhad arrived at the same market. None altered the continuity finding. All changed the account of what \ncontinuity had required. \nSere added a section on lived consequence, clearly attributed and separate from the certification \nchain. \nThe older woman watched her. “You make room after you've measured whether the room is safe.” \nIt was not praise. Nor wholly criticism. \n“Usually,” Sere said. \n“People notice the measuring.” \nThe observation stayed with her because she could not dismiss it as resistance to an unfavorable \nfinding. \nWhen they were gone, Sere noted her own failure to explain the process before it became another \ninjury. Procedure could preserve fairness and still feel like suspicion. \nShe arranged for supervised access to the letters the next morning. \n* * * \nAt her workspace, Sere built the final report from sources that disagreed for intelligible reasons. \nThe office was quiet after hours. Beyond the glass, cleaners moved through the corridor, briefly \nbright beneath each automatic light. On her wall, three narrow shelves held closed case files and no \npersonal photographs. She had never decided this was a principle. It had simply become true through \nrepetition. \nShe attached the employment logs, witness qualifications, unresolved estate dispute, and limits of \nher conclusion. \nIdentity reconstruction was sometimes described as recovery, as though a person lay intact beneath \na mess of records waiting to be uncovered. The description was comforting and wrong. Her work was \ncloser to joining a fractured load-bearing structure: every connection had to bear weight, and the repair \nhad to show where it might fail. \nAt nine seventeen, the institutional review system returned provisional acceptance: continuity \nsupported; adversarial review available; legal effects stayed pending confirmation. \nThe property officer sent a message a minute later. \nSo there was one man after all. \nSere looked at the sentence before answering. \nThere was always one man. We established how the records belonged to him. \nShe watched the status change from disputed to reviewable. The system made no claim that the \nman was solved or whole. Sere respected its restraint. \nAs she shut down her terminal, her hand returned to the report controls to check the conclusion \nonce more. She stopped before opening it. \nUncertainty had narrowed under pressure. Contradictions had taken their places in time. A life \ndivided by paperwork and grief could again be acted upon as one continuous life. \nMost cases yielded if the evidence was made complete enough. \nShe believed this not as comfort but as a working rule, tested against years of fractured records and \nunreliable recollection. People misplaced facts. Systems repeated mistakes. Families protected \nincompatible accounts of the same life. Patient comparison usually exposed the point at which their \nstories had divided. \nThe rule had failed her once. That failure remained closed in an older file and in the private \ndiscipline with which she checked every conclusion twice. \nTonight, the rule had held. \nShe locked the file away and left the office in order.";
+const mode = "baseline";
+let voices=[], chunks=[], index=0, speaking=false;
+const voiceSel=document.getElementById('voice'), rate=document.getElementById('rate'), pitch=document.getElementById('pitch');
+const rateVal=document.getElementById('rateVal'), pitchVal=document.getElementById('pitchVal');
+rate.oninput=()=>rateVal.textContent=rate.value; pitch.oninput=()=>pitchVal.textContent=pitch.value;
+
+function loadVoices(){
+ voices=speechSynthesis.getVoices();
+ voiceSel.innerHTML='';
+ voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' — '+v.lang;voiceSel.appendChild(o);});
+ let i=voices.findIndex(v=>/Google UK English Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
+ if(i<0)i=voices.findIndex(v=>/Google.*Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
+ if(i<0)i=voices.findIndex(v=>/^en-GB/i.test(v.lang));
+ if(i<0)i=voices.findIndex(v=>/^en/i.test(v.lang));
+ if(i>=0){voiceSel.value=i;document.getElementById('status').textContent='Selected: '+voices[i].name+' — '+voices[i].lang;}
+}
+speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+
+function makeChunks(t){
+ const paras=t.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+ const out=[];
+ for(const p of paras){
+   if(p.length<=850){out.push(p);continue;}
+   const parts=p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g)||[p];
+   let cur='';
+   for(const s of parts){
+      if((cur+' '+s).length>850 && cur){out.push(cur.trim());cur=s;}
+      else cur += (cur?' ':'')+s;
+   }
+   if(cur.trim())out.push(cur.trim());
+ }
+ return out;
+}
+chunks=makeChunks(rawText);
+const key='TFN_' + "01" + '_pos';
+index=parseInt(localStorage.getItem(key)||'0');
+if(index>=chunks.length)index=0;
+updateProgress();
+
+function modeRate(){
+ let r=parseFloat(rate.value);
+ if(mode==='resonance')r-=0.025;
+ if(mode==='emotion')r-=0.03;
+ if(mode==='preview')r-=0.015;
+ if(mode==='warmth')r+=0.01;
+ return Math.max(.68, Math.min(1.1,r));
+}
+function speakNext(){
+ if(index>=chunks.length){speaking=false;index=0;localStorage.setItem(key,'0');updateProgress();document.getElementById('status').textContent='Finished';return;}
+ const u=new SpeechSynthesisUtterance(chunks[index]);
+ const v=voices[parseInt(voiceSel.value)];
+ if(v)u.voice=v;
+ u.rate=modeRate();u.pitch=parseFloat(pitch.value);u.volume=1;
+ u.onend=()=>{index++;localStorage.setItem(key,String(index));updateProgress();if(speaking)setTimeout(speakNext, mode==='preview'?700:450);};
+ u.onerror=()=>{speaking=false;document.getElementById('status').textContent='Playback interrupted — press Play to resume';};
+ speechSynthesis.speak(u);
+}
+function play(){if(speechSynthesis.paused){speechSynthesis.resume();return;} if(speaking)return; speaking=true; speakNext();}
+function toggle(){if(speechSynthesis.speaking){if(speechSynthesis.paused)speechSynthesis.resume();else speechSynthesis.pause();}}
+function stopSpeech(){speaking=false;speechSynthesis.cancel();}
+function restart(){stopSpeech();index=0;localStorage.setItem(key,'0');updateProgress();}
+function updateProgress(){document.getElementById('bar').style.width=((index/Math.max(1,chunks.length))*100)+'%';}
+</script>
+</body></html>

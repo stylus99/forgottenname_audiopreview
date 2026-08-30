@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Back-Cover Preview — The Forgotten Name</title>
+<style>
+:root{--bg:#0d0f13;--panel:#16191f;--line:#292e38;--text:#f0f2f5;--muted:#aeb5c0;--accent:#d1c19a}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.64}
+.wrap{max-width:900px;margin:auto;padding:28px 18px 80px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
+h1{font-size:1.8rem;margin:0} h2{color:var(--accent);font-size:1.15rem;font-weight:normal;margin:.35rem 0 1.2rem}
+.controls{position:sticky;top:0;background:rgba(22,25,31,.97);padding:12px 0;z-index:3}
+button{background:#252a34;color:white;border:1px solid #3a414e;border-radius:9px;padding:10px 13px;margin:4px;cursor:pointer}
+button.primary{background:#493f2f}
+select,input{width:100%;margin:5px 0 12px}
+select{background:#0e1116;color:white;border:1px solid var(--line);padding:9px;border-radius:7px}
+.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.status{color:var(--accent);margin:8px 0}
+.small{color:var(--muted);font-size:.9rem}
+.text{white-space:pre-wrap;margin-top:24px}
+.progress{height:5px;background:#252a34;border-radius:5px;overflow:hidden;margin-top:10px}
+.bar{height:100%;width:0;background:#9e9377}
+</style>
+</head>
+<body>
+<div class="wrap"><div class="card">
+<h1>THE FORGOTTEN NAME</h1>
+<h2>Back-Cover Preview · By CL HARRIS</h2>
+<div class="controls">
+<div class="grid">
+<div><label>Voice</label><select id="voice"></select></div>
+<div><label>Rate <span id="rateVal">0.88</span></label><input id="rate" type="range" min="0.72" max="1.05" step="0.01" value="0.88"></div>
+<div><label>Pitch <span id="pitchVal">0.90</span></label><input id="pitch" type="range" min="0.75" max="1.05" step="0.01" value="0.90"></div>
+</div>
+<button class="primary" onclick="play()">▶ Play</button>
+<button onclick="toggle()">⏯ Pause / Resume</button>
+<button onclick="stopSpeech()">■ Stop</button>
+<button onclick="restart()">↺ Restart</button>
+<div class="status" id="status">Preferred: Google UK English Female — en-GB</div>
+<div class="progress"><div class="bar" id="bar"></div></div>
+<div class="small">Narration profile: intimate, restrained, measured; no suspense-style clue emphasis. Playback position is saved on this device.</div>
+</div>
+<div class="text">THE FORGOTTEN NAME
+By CL HARRIS
+
+Ilyra Venn is dead, and her life will not stop working.
+
+Rent still clears. A child is still collected from school. An old man still receives care in her name—and no one who benefits from any of it can quite say who she was.
+
+Sere Arden examines the dead for a living. She tests evidence, exposes contradiction, and certifies what a record can bear. It is careful work, built on the conviction that what happened leaves something behind.
+
+But Ilyra Venn&#x27;s case refuses to behave like evidence should.
+
+A damaged record. A contradiction where none should exist. Obligations that continue without anyone remembering the woman who created them. And everywhere Sere looks, the same impossible absence: Ilyra&#x27;s life has left consequences behind, while Ilyra herself is disappearing from the world that still depends on them.
+
+Then the case begins reaching into Sere&#x27;s own life.
+
+The closer she comes to understanding what happened to Ilyra, the harder it becomes to trust the certainties on which she has built her work—and herself.
+
+Some things are forgotten because they no longer matter.
+
+Sere is beginning to suspect Ilyra Venn was erased because she still does.
+
+Discover more about The Forgotten Name at ForgottenName.com.</div>
+</div></div>
+<script>
+const rawText = "THE FORGOTTEN NAME\nBy CL HARRIS\n\nIlyra Venn is dead, and her life will not stop working.\n\nRent still clears. A child is still collected from school. An old man still receives care in her name—and no one who benefits from any of it can quite say who she was.\n\nSere Arden examines the dead for a living. She tests evidence, exposes contradiction, and certifies what a record can bear. It is careful work, built on the conviction that what happened leaves something behind.\n\nBut Ilyra Venn's case refuses to behave like evidence should.\n\nA damaged record. A contradiction where none should exist. Obligations that continue without anyone remembering the woman who created them. And everywhere Sere looks, the same impossible absence: Ilyra's life has left consequences behind, while Ilyra herself is disappearing from the world that still depends on them.\n\nThen the case begins reaching into Sere's own life.\n\nThe closer she comes to understanding what happened to Ilyra, the harder it becomes to trust the certainties on which she has built her work—and herself.\n\nSome things are forgotten because they no longer matter.\n\nSere is beginning to suspect Ilyra Venn was erased because she still does.\n\nDiscover more about The Forgotten Name at ForgottenName.com.";
+const mode = "preview";
+let voices=[], chunks=[], index=0, speaking=false;
+const voiceSel=document.getElementById('voice'), rate=document.getElementById('rate'), pitch=document.getElementById('pitch');
+const rateVal=document.getElementById('rateVal'), pitchVal=document.getElementById('pitchVal');
+rate.oninput=()=>rateVal.textContent=rate.value; pitch.oninput=()=>pitchVal.textContent=pitch.value;
+
+function loadVoices(){
+ voices=speechSynthesis.getVoices();
+ voiceSel.innerHTML='';
+ voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' — '+v.lang;voiceSel.appendChild(o);});
+ let i=voices.findIndex(v=>/Google UK English Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
+ if(i<0)i=voices.findIndex(v=>/Google.*Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
+ if(i<0)i=voices.findIndex(v=>/^en-GB/i.test(v.lang));
+ if(i<0)i=voices.findIndex(v=>/^en/i.test(v.lang));
+ if(i>=0){voiceSel.value=i;document.getElementById('status').textContent='Selected: '+voices[i].name+' — '+voices[i].lang;}
+}
+speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+
+function makeChunks(t){
+ const paras=t.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
+ const out=[];
+ for(const p of paras){
+   if(p.length<=850){out.push(p);continue;}
+   const parts=p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g)||[p];
+   let cur='';
+   for(const s of parts){
+      if((cur+' '+s).length>850 && cur){out.push(cur.trim());cur=s;}
+      else cur += (cur?' ':'')+s;
+   }
+   if(cur.trim())out.push(cur.trim());
+ }
+ return out;
+}
+chunks=makeChunks(rawText);
+const key='TFN_' + "00" + '_pos';
+index=parseInt(localStorage.getItem(key)||'0');
+if(index>=chunks.length)index=0;
+updateProgress();
+
+function modeRate(){
+ let r=parseFloat(rate.value);
+ if(mode==='resonance')r-=0.025;
+ if(mode==='emotion')r-=0.03;
+ if(mode==='preview')r-=0.015;
+ if(mode==='warmth')r+=0.01;
+ return Math.max(.68, Math.min(1.1,r));
+}
+function speakNext(){
+ if(index>=chunks.length){speaking=false;index=0;localStorage.setItem(key,'0');updateProgress();document.getElementById('status').textContent='Finished';return;}
+ const u=new SpeechSynthesisUtterance(chunks[index]);
+ const v=voices[parseInt(voiceSel.value)];
+ if(v)u.voice=v;
+ u.rate=modeRate();u.pitch=parseFloat(pitch.value);u.volume=1;
+ u.onend=()=>{index++;localStorage.setItem(key,String(index));updateProgress();if(speaking)setTimeout(speakNext, mode==='preview'?700:450);};
+ u.onerror=()=>{speaking=false;document.getElementById('status').textContent='Playback interrupted — press Play to resume';};
+ speechSynthesis.speak(u);
+}
+function play(){if(speechSynthesis.paused){speechSynthesis.resume();return;} if(speaking)return; speaking=true; speakNext();}
+function toggle(){if(speechSynthesis.speaking){if(speechSynthesis.paused)speechSynthesis.resume();else speechSynthesis.pause();}}
+function stopSpeech(){speaking=false;speechSynthesis.cancel();}
+function restart(){stopSpeech();index=0;localStorage.setItem(key,'0');updateProgress();}
+function updateProgress(){document.getElementById('bar').style.width=((index/Math.max(1,chunks.length))*100)+'%';}
+</script>
+</body></html>
