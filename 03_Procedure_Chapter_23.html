@@ -5,45 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Procedure — Chapter 23 — The Forgotten Name</title>
 <style>
-:root{--bg:#0d0f13;--panel:#16191f;--line:#292e38;--text:#f0f2f5;--muted:#aeb5c0;--accent:#d1c19a}
+:root{
+  --bg:#0b0d11;
+  --panel:#141821;
+  --panel2:#1a1f2a;
+  --line:#2b313e;
+  --text:#f0f2f5;
+  --muted:#b1b7c1;
+  --accent:#d0c09a;
+  --button:#262c38;
+  --button2:#39311f;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.64}
-.wrap{max-width:900px;margin:auto;padding:28px 18px 80px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
-h1{font-size:1.8rem;margin:0} h2{color:var(--accent);font-size:1.15rem;font-weight:normal;margin:.35rem 0 1.2rem}
-.controls{position:sticky;top:0;background:rgba(22,25,31,.97);padding:12px 0;z-index:3}
-button{background:#252a34;color:white;border:1px solid #3a414e;border-radius:9px;padding:10px 13px;margin:4px;cursor:pointer}
-button.primary{background:#493f2f}
-select,input{width:100%;margin:5px 0 12px}
-select{background:#0e1116;color:white;border:1px solid var(--line);padding:9px;border-radius:7px}
-.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.status{color:var(--accent);margin:8px 0}
-.small{color:var(--muted);font-size:.9rem}
-.text{white-space:pre-wrap;margin-top:24px}
-.progress{height:5px;background:#252a34;border-radius:5px;overflow:hidden;margin-top:10px}
-.bar{height:100%;width:0;background:#9e9377}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0b0d11 0%, #111621 100%);
+  color:var(--text);
+  font-family:Georgia, "Times New Roman", serif;
+  line-height:1.65;
+}
+a{color:#e3d3ad}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 16px 70px}
+.panel{background:rgba(20,24,33,.96);border:1px solid var(--line);border-radius:18px;padding:20px}
+.hero{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
+.hero img{width:100%;height:auto;border-radius:12px;border:1px solid #3a3f4a;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+@media (max-width:850px){.hero{grid-template-columns:1fr}.hero img{max-width:380px}}
+.kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-size:.9rem}
+h1{font-size:2.1rem;margin:.25rem 0 .2rem}
+h2{font-size:1.2rem;margin:0 0 .8rem;color:var(--accent);font-weight:normal}
+p.lead{font-size:1.04rem;color:var(--muted);margin-top:.2rem}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+button,.speed-btn{
+  background:var(--button);
+  color:var(--text);
+  border:1px solid #40485a;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font:inherit;
+}
+button.primary{background:var(--button2);border-color:#65583f}
+button:hover,.speed-btn:hover{filter:brightness(1.08)}
+.speed-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.speed-btn.active{background:#50452f;border-color:#7a6c4b}
+.small{font-size:.92rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+.track{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:center;
+  background:rgba(26,31,42,.9);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+}
+.track-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #4a5161;color:var(--accent);font-weight:bold
+}
+.track-title{font-size:1.06rem}
+.track-sub{font-size:.92rem;color:var(--muted)}
+.current-track{margin:14px 0 6px;color:var(--accent)}
+.progress{height:7px;background:#252c38;border-radius:999px;overflow:hidden}
+.bar{height:100%;width:0;background:#bca77a}
+.text{white-space:pre-wrap;margin-top:18px}
+.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.inline-note{font-size:.92rem;color:var(--muted)}
+.link-btn{display:inline-block;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="wrap"><div class="card">
-<h1>THE FORGOTTEN NAME</h1>
-<h2>Procedure — Chapter 23 · By CL HARRIS</h2>
-<div class="controls">
-<div class="grid">
-<div><label>Voice</label><select id="voice"></select></div>
-<div><label>Rate <span id="rateVal">0.88</span></label><input id="rate" type="range" min="0.72" max="1.05" step="0.01" value="0.88"></div>
-<div><label>Pitch <span id="pitchVal">0.90</span></label><input id="pitch" type="range" min="0.75" max="1.05" step="0.01" value="0.90"></div>
-</div>
-<button class="primary" onclick="play()">▶ Play</button>
-<button onclick="toggle()">⏯ Pause / Resume</button>
-<button onclick="stopSpeech()">■ Stop</button>
-<button onclick="restart()">↺ Restart</button>
-<div class="status" id="status">Preferred: Google UK English Female — en-GB</div>
-<div class="progress"><div class="bar" id="bar"></div></div>
-<div class="small">Narration profile: intimate, restrained, measured; no suspense-style clue emphasis. Playback position is saved on this device.</div>
-</div>
-<div class="text">Chapter 23
+<div class="wrap">
+  <div class="panel">
+    <div class="topbar">
+      <a class="link-btn" href="index.html">← Back to preview home</a>
+      <div class="speed-group">
+        <span class="small">Speed</span>
+        <button class="speed-btn" data-speed="current" onclick="setSpeed('current')">Current</button>
+        <button class="speed-btn" data-speed="1.5x" onclick="setSpeed('1.5x')">1.5x</button>
+        <button class="speed-btn" data-speed="2x" onclick="setSpeed('2x')">2x</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div><img src="cover.jpg" alt="The Forgotten Name cover art"></div>
+      <div>
+        <div class="kicker">Private Audio Preview</div>
+        <h1>THE FORGOTTEN NAME</h1>
+        <h2>Procedure — Chapter 23 · By CL HARRIS</h2>
+        <p class="lead">Institutional and procedural tension</p>
+        <div class="controls">
+          <button class="primary" onclick="play()">▶ Play</button>
+          <button onclick="togglePlay()">⏯ Pause / Resume</button>
+          <button onclick="restartTrack()">↺ Restart</button>
+          <button onclick="stopSpeech()">■ Stop</button>
+        </div>
+        <div class="current-track" id="status">Ready to play</div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <p class="small" id="voiceStatus">The player will automatically choose the best available English voice, preferring Google UK English Female — en-GB.</p>
+      </div>
+    </div>
+    <div class="text">Chapter 23
 
 Sere prohibited the word before anyone could use it. 
 They met in the cart court before sunrise because the households would permit testing only before 
@@ -256,70 +319,160 @@ corrected, claims queued, families arguing over translations.
 She had not become separate from that world or superior to it. 
 She had acquired a verified relationship function and a risk she did not understand. 
 The case and the self examining it could no longer be separated.</div>
-</div></div>
+  </div>
+</div>
 <script>
-const rawText = "Chapter 23\n\nSere prohibited the word before anyone could use it. \nThey met in the cart court before sunrise because the households would permit testing only before \nwork began. Talin read the protocol aloud. Nemi held community stop authority. Corren monitored risk. \nSere could answer questions but could not redesign the test once it started. \nThe prohibited word appeared nowhere on the forms. \n“We are testing function,” Sere said, “not adopting a category whose mechanism we cannot define.” \nCorren checked the blank incident forms. “Agreed.” \nSere disliked how readily she agreed. \nThey began with four hostile explanations: ordinary partnership, documentary bias, current \ncontamination, and selective memory loss around grief. Each received a test capable of lowering the \nstructural finding. \nFor partnership, Talin selected three Ilyra colleagues with comparable case years. All held \nprofessional trust. None crossed as many independent channels. \nFor bias, a blind clerk removed every record created after Ilyra's death. Sere remained central \nthrough older halt orders, hidden-room permissions, visit routes, and distributed custody. \nFor contamination, Nemi used practices documented before Sere reopened the case. Brenna's \nwinter schedule, old cart-court assignments, and preserved household responses still routed consequence \nthrough Sere. \nFor grief, Corren separated feeling from function. Emotional residue could be grief. The question \nwas whether people and systems retained operational dependence on Sere's recognition. \nThe court coordinator brought a repair packet deposited nine years earlier. Its release condition \nread: \nOpen only when two listed routes fail to recognize the same custodian. \nBoth routes had now failed. \nInside were three repair histories and no message from Ilyra. Each preserved a decision requiring \nSere's prior method: one material chronology, one consequence ledger, one mutual-stop record. \nAnother trained specialist reconstructed the chronology. What the specialist missed was why one \nrepair had been intentionally left visible. \nSere identified the visible border as a consent boundary. Ilyra had refused restoration that would \nerase evidence of household alteration. \n“Training?” Sere asked. \nThe specialist held the same preservation certification. \n“Prior case knowledge?” \nPossible. \nTalin found an authority sheet bearing the reciprocal halt identifier from the older custody ledger. \nThe ledger linked it to Sere. Ilyra had granted a person—not an office or role—power to halt reuse if a \nrepair's social consequence could not be reconstructed. \nThe power had been reaffirmed through joint case action. Two reaffirmations occurred after Sere's \nexplicit memory of Ilyra had begun to degrade. \nAn equally certified specialist could reconstruct material rationale. The specialist could not recover \nthe same consent boundary. \nPrivate training remained possible. So did learned relational practice. \nSere required both limitations entered. \n“Function remains relationship-specific,” Talin said. \n“One document.” \n“One independently released document added to six prior channels.” \nSere entered the objection anyway. \nThey tested absence. \nSere waited behind the grain wall while the specialist, Talin, and Nemi executed the repair decisions. \nChronology and remedy succeeded. At the consent boundary, the specialist chose a reversible repair that \nwould hide visible alteration. Nemi stopped it because the household had not authorized removal of the \nmark. \nWhen Sere returned, she rejected the same repair for another reason: Ilyra had treated visible \nalteration as truthful custody. \nNemi's method protected present consent. Sere's recognition protected continuity of Ilyra's \njudgment. \nThey reversed the test. Sere worked without Nemi and preserved Ilyra's earlier decision while nearly \nassuming the household still wanted it. Talin halted her. \nRelationship continuity could not replace present consent. \nCorren ended object handling when repeated use began polishing the buckle's wear. The test itself \nhad started changing evidence in an ordinary material way. \nThey shifted to photographs. \n* * * \nAt Sere's workspace, Talin ran the blind review without her in the room. \nFour reviewers received an operational definition stripped of its disputed label: \na person or relationship node whose continued recognition materially stabilizes another \nperson's continuity across channels. \nEvidence arrived in stages. \nProfessional records alone produced high-trust colleague. Living-practice routes divided the \nreviewers between partnership and continuity custody. Only when pre-current bodily responses, \nreciprocal instruction, and the repair packet were added did all four agree that Sere's continued \nrecognition had been used to stabilize Ilyra-linked consequences across independent channels. \nThey disagreed on cause, uniqueness, risk, and terminology. \nSere read every minority note first. \nOne reviewer argued that stabilizes overstated the evidence. Generic office review preserved three \nconsequences but lost constraints Ilyra had attached. Another argued that Ilyra might have manufactured \ndependence intentionally. \nSere seized that point. “If she constructed the role without my knowledge, the finding is about \nIlyra's strategy, not my nature.” \n“Correct,” Talin said. “The role is relational and historical. No one has proposed a nature.” \nCorren stood by the closed window. “Do not confuse an operational category with an essence.” \n“You recognize the category.” \n“I recognize the evidence shape.” \n“How long?” \nCorren looked at the packets. “Long enough to know that naming it does not explain it.” \nThe answer revealed less than Sere wanted and more than she trusted. \nThey tested whether any other node served the same function. Brenna preserved visit routes. Nemi \npreserved living-practice context. Talin preserved legal standing. Several objects preserved custody. \nThe network was plural. Sere was neither sole nor universally necessary. \nBut across Ilyra's distributed channels, Sere uniquely combined reciprocal personal recognition, \nprofessional halt authority, embodied practice, and cross-domain custody. \nThe position had accumulated through repeated trust and use. \nSere drafted the narrow conclusion: \nSere Arden functions, before and after explicit recognition failure, as a surviving continuity node for \nIlyra Venn. Her recognition materially preserves Ilyra-linked decisions across independent channels. \nExact mechanism and full scope unknown. \nReviewers divided the evidence into pre-failure, early-failure, and current periods. Before failure, \nSere looked like an unusually trusted partner. During early failure, reciprocal instructions increased. In \nthe present, people and practices still routed Ilyra-linked consequence through Sere despite missing \nexplicit relationship memory. \nThe function had changed form without ending. \nNemi refused the institutional label in their certification. They wrote: \nSere continues to act in ways that preserve Ilyra's decisions and relationships where direct \nnaming has failed. I certify the practice, not the category. \nTalin accepted the limit. Corren signed only the risk appendix. \nPlural method made the boundaries of agreement visible. \n* * * \nExternal certification took place beneath the civic records hall. \nThe two reviewers from Corren's register order attended behind a screen. They had inspected the \nsealed source material and Sere's apprenticeship chronology without seeing her current conclusion. \nOne confirmed that Sere's unassigned placement touched two Ilyra-linked transfer routes. The \nother confirmed that those routes were later separated in the records. Neither could say why. \nThey conducted one final test. \nSere, Talin, Nemi, and three neutral specialists received de-identified fragments from an Ilyra case. \nThe specialists rebuilt chronology. Talin restored remedy. Nemi reconstructed living practice. \nSere received only the conflicts among their outputs. \nShe found that the proposed remedy violated a halt condition preserved only in the disagreement \nbetween two records. One described a repaired door as complete. Another left its border visible. \nSere knew Ilyra would not have called the second incomplete. Visible alteration had been the point. \n“Prior training,” one reviewer said. \n“Yes.” \n“Personal familiarity?” \n“Possible.” \n“Recognition of Ilyra's decision style?” \nTalin required the question narrowed. \nThe reviewer tried again. “Would you make the same inference if another examiner authored the \nrecords?” \n“Not without evidence that the examiner treated visible repair as consent history.” \n“What evidence gives you that for Ilyra?” \nSere saw no recovered scene. She saw the wall hanging, repair thread, Eda's testimony, the records \nof Ilyra changing her recommendation after correction. \n“Repeated decisions,” she said. “And the expectation that she would let another person's correction \nalter the method without erasing who corrected her.” \nNemi presented two routes for carrying the repaired-door decision forward. One preserved Ilyra's \nconclusion but erased the household objection. The other preserved the disagreement and delayed \nclosure. \nSere chose the second before reading the authorship key. \nIt matched Ilyra's authenticated halt instruction. \nChance remained possible. Shared professional ethics remained possible. Deliberate training \nremained possible. \nNone contradicted the operational finding. They described ways a relationship could create it. \nThe reviewers returned a certification with three limits: no unique metaphysical status; no ancient or \nuniversal mechanics; no claim that Sere alone preserved Ilyra. \nWithin those limits, the evidence met the standard. \nTalin read the finding aloud. \n“Sere Arden is a surviving anchor in Ilyra Venn's recognition network: a relationship node whose \ncontinued recognition materially stabilizes Ilyra's continuity across channels.” \nThe word entered the room without changing the light. \nNo one spoke while Talin copied it onto the subject-review form. \nSere watched her own name move from the examiner line to the person-observed line. \nThe chair beneath her became the wrong side of the table. \nFor several breaths Sere could not make herself ask the next procedural question. \nExposure was not the presence of witnesses. It was seeing a word attached to a pattern her body \nhad been carrying without consent from her conscious life. Fear arrived as an urge to narrow everything: \nthe room, the evidence, Talin's reach, Ilyra's possible motive. \nThe word anchor did not frighten her as much as its accuracy might. \nIf the finding was accurate, Ilyra had trusted Sere enough to place consequences where Sere's \njudgment could keep them alive. The thought carried warmth before suspicion cut through it. Trust \ncould be reciprocal. It could also be used to construct a duty the present person had never agreed to \nbear. \nSere looked at Talin. Conflicted trust was still trust; that did not make it safe. \nShe let the feeling remain unclassified, then asked for the basis again. \nShe required the basis stated again. Reciprocal authority. Distributed custody. Living route \nexpectation. Embodied decision recognition. Pre-current records. Consequences degrading when she \nwas removed. \nThen the limits. No unique power. No complete restoration. No known mechanism. No proof Ilyra \nunderstood the full risk. \n“Could another person become an anchor through the same relationship?” \n“Unknown.” \n“Am I an anchor for anyone else?” \n“Not established.” \n“Does the term describe me or the relationship?” \nThe reviewers disagreed. \nThe disagreement entered the certification. \nCorren watched Sere reread the word. “A label is useful only as far as its evidence.” \n“You knew the label.” \n“I knew a working term.” \nTalin halted the inquiry before it crossed the review's authority. Sere resented the halt and signed it. \nEarlier traces reorganized without becoming memories. Her hand placing a cup for someone \nabsent. Laughter beneath *You cheated*. The authority to stop Ilyra's work and be stopped in return. \nSeven years of facts that remained professionally legible while their emotional owner disappeared. \nShe returned to the repair image. The visible border had been evidence of consent practice an hour \nearlier. Under the new word, it also became residue of an argument between two people who expected \nthe other to remain answerable. \nSere closed the image before that second meaning could pretend to be recovery. \nShe had helped hold Ilyra legible without knowing that was what she was doing. \nThe finding did not restore Ilyra. \nIt made the failure personal in a new direction. \nIf Sere's recognition had carried Ilyra across broken channels, then the instability now gathering \naround Sere threatened more than memory. It threatened the function the network had placed in her. \nShe signed the certification as subject, not examiner. \nTalin sanded the signature, sealed the examiner copy, and placed both beyond Sere's reach without \napology. Ordinary custody practice hurt more because it was ordinary. \nBefore leaving, Sere asked to see the failed models beside the certification: partnership alone, grief \nalone, documentary bias, current contamination, deliberate fabrication, unique innate capacity. \nEach explained part. None explained the independent persistence of Ilyra's decisions through Sere \nacross time and channel. \nThe surviving model was less grand. Two people had developed reciprocal recognition strong \nenough that habits, permissions, corrections, and expectations kept carrying consequence after memory \nand attribution fractured. Others held parts of Ilyra too. Sere held a particular crossing of them. \nShe thought of the cup in the hidden room. \nIts importance had never been the cup. \nIt was the place her hand expected another person's need to be. \nTalin sealed the certification before Sere could read it again. Nemi left for the water meeting. \nCorren remained behind the screen with the risk reviewers, offering no explanation of how much she \nhad anticipated. \nSere walked upstairs under paired access. The ordinary records hall continued above them: names \ncorrected, claims queued, families arguing over translations. \nShe had not become separate from that world or superior to it. \nShe had acquired a verified relationship function and a risk she did not understand. \nThe case and the self examining it could no longer be separated.";
-const mode = "procedure";
-let voices=[], chunks=[], index=0, speaking=false;
-const voiceSel=document.getElementById('voice'), rate=document.getElementById('rate'), pitch=document.getElementById('pitch');
-const rateVal=document.getElementById('rateVal'), pitchVal=document.getElementById('pitchVal');
-rate.oninput=()=>rateVal.textContent=rate.value; pitch.oninput=()=>pitchVal.textContent=pitch.value;
+
+let voices = [];
+let speaking = false;
+let chunks = [];
+let chunkIndex = 0;
+let selectedSpeed = localStorage.getItem('tfn_speed') || 'current';
 
 function loadVoices(){
- voices=speechSynthesis.getVoices();
- voiceSel.innerHTML='';
- voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' — '+v.lang;voiceSel.appendChild(o);});
- let i=voices.findIndex(v=>/Google UK English Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/Google.*Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en/i.test(v.lang));
- if(i>=0){voiceSel.value=i;document.getElementById('status').textContent='Selected: '+voices[i].name+' — '+voices[i].lang;}
+  voices = speechSynthesis.getVoices();
 }
-speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
 
-function makeChunks(t){
- const paras=t.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
- const out=[];
- for(const p of paras){
-   if(p.length<=850){out.push(p);continue;}
-   const parts=p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g)||[p];
-   let cur='';
-   for(const s of parts){
-      if((cur+' '+s).length>850 && cur){out.push(cur.trim());cur=s;}
-      else cur += (cur?' ':'')+s;
-   }
-   if(cur.trim())out.push(cur.trim());
- }
- return out;
+function bestVoice(){
+  let v = voices.find(v => /Google UK English Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /Google.*Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en/i.test(v.lang));
+  return v || null;
 }
-chunks=makeChunks(rawText);
-const key='TFN_' + "03" + '_pos';
-index=parseInt(localStorage.getItem(key)||'0');
-if(index>=chunks.length)index=0;
-updateProgress();
 
-function modeRate(){
- let r=parseFloat(rate.value);
- if(mode==='resonance')r-=0.025;
- if(mode==='emotion')r-=0.03;
- if(mode==='preview')r-=0.015;
- if(mode==='warmth')r+=0.01;
- return Math.max(.68, Math.min(1.1,r));
+function makeChunks(text){
+  const paras = text.split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+  const out = [];
+  for (const p of paras){
+    if (p.length <= 850){ out.push(p); continue; }
+    const parts = p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g) || [p];
+    let cur = '';
+    for (const s of parts){
+      if ((cur + ' ' + s).length > 850 && cur){
+        out.push(cur.trim());
+        cur = s;
+      } else {
+        cur += (cur ? ' ' : '') + s;
+      }
+    }
+    if (cur.trim()) out.push(cur.trim());
+  }
+  return out;
 }
+
+function baseRateFor(mode){
+  let r = 0.88;
+  if (mode === 'resonance') r -= 0.025;
+  if (mode === 'emotion') r -= 0.03;
+  if (mode === 'preview') r -= 0.015;
+  if (mode === 'warmth') r += 0.01;
+  return r;
+}
+
+function effectiveRate(mode){
+  const base = baseRateFor(mode);
+  if (selectedSpeed === '1.5x') return Math.min(10, base * 1.5);
+  if (selectedSpeed === '2x') return Math.min(10, base * 2);
+  return base;
+}
+
+function setSpeed(v){
+  selectedSpeed = v;
+  localStorage.setItem('tfn_speed', v);
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.speed === v);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => setSpeed(selectedSpeed));
+
+function stopSpeech(){
+  speaking = false;
+  speechSynthesis.cancel();
+}
+
+const trackText = "Chapter 23\n\nSere prohibited the word before anyone could use it. \nThey met in the cart court before sunrise because the households would permit testing only before \nwork began. Talin read the protocol aloud. Nemi held community stop authority. Corren monitored risk. \nSere could answer questions but could not redesign the test once it started. \nThe prohibited word appeared nowhere on the forms. \n“We are testing function,” Sere said, “not adopting a category whose mechanism we cannot define.” \nCorren checked the blank incident forms. “Agreed.” \nSere disliked how readily she agreed. \nThey began with four hostile explanations: ordinary partnership, documentary bias, current \ncontamination, and selective memory loss around grief. Each received a test capable of lowering the \nstructural finding. \nFor partnership, Talin selected three Ilyra colleagues with comparable case years. All held \nprofessional trust. None crossed as many independent channels. \nFor bias, a blind clerk removed every record created after Ilyra's death. Sere remained central \nthrough older halt orders, hidden-room permissions, visit routes, and distributed custody. \nFor contamination, Nemi used practices documented before Sere reopened the case. Brenna's \nwinter schedule, old cart-court assignments, and preserved household responses still routed consequence \nthrough Sere. \nFor grief, Corren separated feeling from function. Emotional residue could be grief. The question \nwas whether people and systems retained operational dependence on Sere's recognition. \nThe court coordinator brought a repair packet deposited nine years earlier. Its release condition \nread: \nOpen only when two listed routes fail to recognize the same custodian. \nBoth routes had now failed. \nInside were three repair histories and no message from Ilyra. Each preserved a decision requiring \nSere's prior method: one material chronology, one consequence ledger, one mutual-stop record. \nAnother trained specialist reconstructed the chronology. What the specialist missed was why one \nrepair had been intentionally left visible. \nSere identified the visible border as a consent boundary. Ilyra had refused restoration that would \nerase evidence of household alteration. \n“Training?” Sere asked. \nThe specialist held the same preservation certification. \n“Prior case knowledge?” \nPossible. \nTalin found an authority sheet bearing the reciprocal halt identifier from the older custody ledger. \nThe ledger linked it to Sere. Ilyra had granted a person—not an office or role—power to halt reuse if a \nrepair's social consequence could not be reconstructed. \nThe power had been reaffirmed through joint case action. Two reaffirmations occurred after Sere's \nexplicit memory of Ilyra had begun to degrade. \nAn equally certified specialist could reconstruct material rationale. The specialist could not recover \nthe same consent boundary. \nPrivate training remained possible. So did learned relational practice. \nSere required both limitations entered. \n“Function remains relationship-specific,” Talin said. \n“One document.” \n“One independently released document added to six prior channels.” \nSere entered the objection anyway. \nThey tested absence. \nSere waited behind the grain wall while the specialist, Talin, and Nemi executed the repair decisions. \nChronology and remedy succeeded. At the consent boundary, the specialist chose a reversible repair that \nwould hide visible alteration. Nemi stopped it because the household had not authorized removal of the \nmark. \nWhen Sere returned, she rejected the same repair for another reason: Ilyra had treated visible \nalteration as truthful custody. \nNemi's method protected present consent. Sere's recognition protected continuity of Ilyra's \njudgment. \nThey reversed the test. Sere worked without Nemi and preserved Ilyra's earlier decision while nearly \nassuming the household still wanted it. Talin halted her. \nRelationship continuity could not replace present consent. \nCorren ended object handling when repeated use began polishing the buckle's wear. The test itself \nhad started changing evidence in an ordinary material way. \nThey shifted to photographs. \n* * * \nAt Sere's workspace, Talin ran the blind review without her in the room. \nFour reviewers received an operational definition stripped of its disputed label: \na person or relationship node whose continued recognition materially stabilizes another \nperson's continuity across channels. \nEvidence arrived in stages. \nProfessional records alone produced high-trust colleague. Living-practice routes divided the \nreviewers between partnership and continuity custody. Only when pre-current bodily responses, \nreciprocal instruction, and the repair packet were added did all four agree that Sere's continued \nrecognition had been used to stabilize Ilyra-linked consequences across independent channels. \nThey disagreed on cause, uniqueness, risk, and terminology. \nSere read every minority note first. \nOne reviewer argued that stabilizes overstated the evidence. Generic office review preserved three \nconsequences but lost constraints Ilyra had attached. Another argued that Ilyra might have manufactured \ndependence intentionally. \nSere seized that point. “If she constructed the role without my knowledge, the finding is about \nIlyra's strategy, not my nature.” \n“Correct,” Talin said. “The role is relational and historical. No one has proposed a nature.” \nCorren stood by the closed window. “Do not confuse an operational category with an essence.” \n“You recognize the category.” \n“I recognize the evidence shape.” \n“How long?” \nCorren looked at the packets. “Long enough to know that naming it does not explain it.” \nThe answer revealed less than Sere wanted and more than she trusted. \nThey tested whether any other node served the same function. Brenna preserved visit routes. Nemi \npreserved living-practice context. Talin preserved legal standing. Several objects preserved custody. \nThe network was plural. Sere was neither sole nor universally necessary. \nBut across Ilyra's distributed channels, Sere uniquely combined reciprocal personal recognition, \nprofessional halt authority, embodied practice, and cross-domain custody. \nThe position had accumulated through repeated trust and use. \nSere drafted the narrow conclusion: \nSere Arden functions, before and after explicit recognition failure, as a surviving continuity node for \nIlyra Venn. Her recognition materially preserves Ilyra-linked decisions across independent channels. \nExact mechanism and full scope unknown. \nReviewers divided the evidence into pre-failure, early-failure, and current periods. Before failure, \nSere looked like an unusually trusted partner. During early failure, reciprocal instructions increased. In \nthe present, people and practices still routed Ilyra-linked consequence through Sere despite missing \nexplicit relationship memory. \nThe function had changed form without ending. \nNemi refused the institutional label in their certification. They wrote: \nSere continues to act in ways that preserve Ilyra's decisions and relationships where direct \nnaming has failed. I certify the practice, not the category. \nTalin accepted the limit. Corren signed only the risk appendix. \nPlural method made the boundaries of agreement visible. \n* * * \nExternal certification took place beneath the civic records hall. \nThe two reviewers from Corren's register order attended behind a screen. They had inspected the \nsealed source material and Sere's apprenticeship chronology without seeing her current conclusion. \nOne confirmed that Sere's unassigned placement touched two Ilyra-linked transfer routes. The \nother confirmed that those routes were later separated in the records. Neither could say why. \nThey conducted one final test. \nSere, Talin, Nemi, and three neutral specialists received de-identified fragments from an Ilyra case. \nThe specialists rebuilt chronology. Talin restored remedy. Nemi reconstructed living practice. \nSere received only the conflicts among their outputs. \nShe found that the proposed remedy violated a halt condition preserved only in the disagreement \nbetween two records. One described a repaired door as complete. Another left its border visible. \nSere knew Ilyra would not have called the second incomplete. Visible alteration had been the point. \n“Prior training,” one reviewer said. \n“Yes.” \n“Personal familiarity?” \n“Possible.” \n“Recognition of Ilyra's decision style?” \nTalin required the question narrowed. \nThe reviewer tried again. “Would you make the same inference if another examiner authored the \nrecords?” \n“Not without evidence that the examiner treated visible repair as consent history.” \n“What evidence gives you that for Ilyra?” \nSere saw no recovered scene. She saw the wall hanging, repair thread, Eda's testimony, the records \nof Ilyra changing her recommendation after correction. \n“Repeated decisions,” she said. “And the expectation that she would let another person's correction \nalter the method without erasing who corrected her.” \nNemi presented two routes for carrying the repaired-door decision forward. One preserved Ilyra's \nconclusion but erased the household objection. The other preserved the disagreement and delayed \nclosure. \nSere chose the second before reading the authorship key. \nIt matched Ilyra's authenticated halt instruction. \nChance remained possible. Shared professional ethics remained possible. Deliberate training \nremained possible. \nNone contradicted the operational finding. They described ways a relationship could create it. \nThe reviewers returned a certification with three limits: no unique metaphysical status; no ancient or \nuniversal mechanics; no claim that Sere alone preserved Ilyra. \nWithin those limits, the evidence met the standard. \nTalin read the finding aloud. \n“Sere Arden is a surviving anchor in Ilyra Venn's recognition network: a relationship node whose \ncontinued recognition materially stabilizes Ilyra's continuity across channels.” \nThe word entered the room without changing the light. \nNo one spoke while Talin copied it onto the subject-review form. \nSere watched her own name move from the examiner line to the person-observed line. \nThe chair beneath her became the wrong side of the table. \nFor several breaths Sere could not make herself ask the next procedural question. \nExposure was not the presence of witnesses. It was seeing a word attached to a pattern her body \nhad been carrying without consent from her conscious life. Fear arrived as an urge to narrow everything: \nthe room, the evidence, Talin's reach, Ilyra's possible motive. \nThe word anchor did not frighten her as much as its accuracy might. \nIf the finding was accurate, Ilyra had trusted Sere enough to place consequences where Sere's \njudgment could keep them alive. The thought carried warmth before suspicion cut through it. Trust \ncould be reciprocal. It could also be used to construct a duty the present person had never agreed to \nbear. \nSere looked at Talin. Conflicted trust was still trust; that did not make it safe. \nShe let the feeling remain unclassified, then asked for the basis again. \nShe required the basis stated again. Reciprocal authority. Distributed custody. Living route \nexpectation. Embodied decision recognition. Pre-current records. Consequences degrading when she \nwas removed. \nThen the limits. No unique power. No complete restoration. No known mechanism. No proof Ilyra \nunderstood the full risk. \n“Could another person become an anchor through the same relationship?” \n“Unknown.” \n“Am I an anchor for anyone else?” \n“Not established.” \n“Does the term describe me or the relationship?” \nThe reviewers disagreed. \nThe disagreement entered the certification. \nCorren watched Sere reread the word. “A label is useful only as far as its evidence.” \n“You knew the label.” \n“I knew a working term.” \nTalin halted the inquiry before it crossed the review's authority. Sere resented the halt and signed it. \nEarlier traces reorganized without becoming memories. Her hand placing a cup for someone \nabsent. Laughter beneath *You cheated*. The authority to stop Ilyra's work and be stopped in return. \nSeven years of facts that remained professionally legible while their emotional owner disappeared. \nShe returned to the repair image. The visible border had been evidence of consent practice an hour \nearlier. Under the new word, it also became residue of an argument between two people who expected \nthe other to remain answerable. \nSere closed the image before that second meaning could pretend to be recovery. \nShe had helped hold Ilyra legible without knowing that was what she was doing. \nThe finding did not restore Ilyra. \nIt made the failure personal in a new direction. \nIf Sere's recognition had carried Ilyra across broken channels, then the instability now gathering \naround Sere threatened more than memory. It threatened the function the network had placed in her. \nShe signed the certification as subject, not examiner. \nTalin sanded the signature, sealed the examiner copy, and placed both beyond Sere's reach without \napology. Ordinary custody practice hurt more because it was ordinary. \nBefore leaving, Sere asked to see the failed models beside the certification: partnership alone, grief \nalone, documentary bias, current contamination, deliberate fabrication, unique innate capacity. \nEach explained part. None explained the independent persistence of Ilyra's decisions through Sere \nacross time and channel. \nThe surviving model was less grand. Two people had developed reciprocal recognition strong \nenough that habits, permissions, corrections, and expectations kept carrying consequence after memory \nand attribution fractured. Others held parts of Ilyra too. Sere held a particular crossing of them. \nShe thought of the cup in the hidden room. \nIts importance had never been the cup. \nIt was the place her hand expected another person's need to be. \nTalin sealed the certification before Sere could read it again. Nemi left for the water meeting. \nCorren remained behind the screen with the risk reviewers, offering no explanation of how much she \nhad anticipated. \nSere walked upstairs under paired access. The ordinary records hall continued above them: names \ncorrected, claims queued, families arguing over translations. \nShe had not become separate from that world or superior to it. \nShe had acquired a verified relationship function and a risk she did not understand. \nThe case and the self examining it could no longer be separated.";
+const trackMode = "procedure";
+const storageKey = 'tfn_03_pos';
+
+function updateStatus(msg){ document.getElementById('status').textContent = msg; }
+function updateBar(){
+  const pct = (chunkIndex / Math.max(1, chunks.length)) * 100;
+  document.getElementById('bar').style.width = pct + '%';
+}
+
+function announceVoice(){
+  const v = bestVoice();
+  if (v) {
+    document.getElementById('voiceStatus').textContent = 'Voice in use: ' + v.name + ' — ' + v.lang;
+  }
+}
+
 function speakNext(){
- if(index>=chunks.length){speaking=false;index=0;localStorage.setItem(key,'0');updateProgress();document.getElementById('status').textContent='Finished';return;}
- const u=new SpeechSynthesisUtterance(chunks[index]);
- const v=voices[parseInt(voiceSel.value)];
- if(v)u.voice=v;
- u.rate=modeRate();u.pitch=parseFloat(pitch.value);u.volume=1;
- u.onend=()=>{index++;localStorage.setItem(key,String(index));updateProgress();if(speaking)setTimeout(speakNext, mode==='preview'?700:450);};
- u.onerror=()=>{speaking=false;document.getElementById('status').textContent='Playback interrupted — press Play to resume';};
- speechSynthesis.speak(u);
+  if (chunkIndex >= chunks.length){
+    speaking = false;
+    chunkIndex = 0;
+    localStorage.setItem(storageKey, '0');
+    updateBar();
+    updateStatus('Finished');
+    return;
+  }
+  const utter = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+  const v = bestVoice();
+  if (v) utter.voice = v;
+  utter.rate = effectiveRate(trackMode);
+  utter.pitch = 0.90;
+  utter.volume = 1;
+  utter.onend = () => {
+    chunkIndex++;
+    localStorage.setItem(storageKey, String(chunkIndex));
+    updateBar();
+    if (speaking) setTimeout(speakNext, trackMode === 'preview' ? 650 : 420);
+  };
+  utter.onerror = () => {
+    speaking = false;
+    updateStatus('Playback interrupted — press Play to continue');
+  };
+  speechSynthesis.speak(utter);
 }
-function play(){if(speechSynthesis.paused){speechSynthesis.resume();return;} if(speaking)return; speaking=true; speakNext();}
-function toggle(){if(speechSynthesis.speaking){if(speechSynthesis.paused)speechSynthesis.resume();else speechSynthesis.pause();}}
-function stopSpeech(){speaking=false;speechSynthesis.cancel();}
-function restart(){stopSpeech();index=0;localStorage.setItem(key,'0');updateProgress();}
-function updateProgress(){document.getElementById('bar').style.width=((index/Math.max(1,chunks.length))*100)+'%';}
+
+function play(){
+  announceVoice();
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); return; }
+  if (speaking) return;
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  speaking = true;
+  updateStatus('Playing');
+  speakNext();
+}
+
+function togglePlay(){
+  if (!speechSynthesis.speaking) return;
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); }
+  else { speechSynthesis.pause(); updateStatus('Paused'); }
+}
+
+function restartTrack(){
+  stopSpeech();
+  chunks = makeChunks(trackText);
+  chunkIndex = 0;
+  localStorage.setItem(storageKey, '0');
+  updateBar();
+  play();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  announceVoice();
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  updateBar();
+});
 </script>
-</body></html>
+</body>
+</html>

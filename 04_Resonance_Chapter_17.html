@@ -5,45 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Resonance — Chapter 17 — The Forgotten Name</title>
 <style>
-:root{--bg:#0d0f13;--panel:#16191f;--line:#292e38;--text:#f0f2f5;--muted:#aeb5c0;--accent:#d1c19a}
+:root{
+  --bg:#0b0d11;
+  --panel:#141821;
+  --panel2:#1a1f2a;
+  --line:#2b313e;
+  --text:#f0f2f5;
+  --muted:#b1b7c1;
+  --accent:#d0c09a;
+  --button:#262c38;
+  --button2:#39311f;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.64}
-.wrap{max-width:900px;margin:auto;padding:28px 18px 80px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
-h1{font-size:1.8rem;margin:0} h2{color:var(--accent);font-size:1.15rem;font-weight:normal;margin:.35rem 0 1.2rem}
-.controls{position:sticky;top:0;background:rgba(22,25,31,.97);padding:12px 0;z-index:3}
-button{background:#252a34;color:white;border:1px solid #3a414e;border-radius:9px;padding:10px 13px;margin:4px;cursor:pointer}
-button.primary{background:#493f2f}
-select,input{width:100%;margin:5px 0 12px}
-select{background:#0e1116;color:white;border:1px solid var(--line);padding:9px;border-radius:7px}
-.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.status{color:var(--accent);margin:8px 0}
-.small{color:var(--muted);font-size:.9rem}
-.text{white-space:pre-wrap;margin-top:24px}
-.progress{height:5px;background:#252a34;border-radius:5px;overflow:hidden;margin-top:10px}
-.bar{height:100%;width:0;background:#9e9377}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0b0d11 0%, #111621 100%);
+  color:var(--text);
+  font-family:Georgia, "Times New Roman", serif;
+  line-height:1.65;
+}
+a{color:#e3d3ad}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 16px 70px}
+.panel{background:rgba(20,24,33,.96);border:1px solid var(--line);border-radius:18px;padding:20px}
+.hero{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
+.hero img{width:100%;height:auto;border-radius:12px;border:1px solid #3a3f4a;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+@media (max-width:850px){.hero{grid-template-columns:1fr}.hero img{max-width:380px}}
+.kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-size:.9rem}
+h1{font-size:2.1rem;margin:.25rem 0 .2rem}
+h2{font-size:1.2rem;margin:0 0 .8rem;color:var(--accent);font-weight:normal}
+p.lead{font-size:1.04rem;color:var(--muted);margin-top:.2rem}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+button,.speed-btn{
+  background:var(--button);
+  color:var(--text);
+  border:1px solid #40485a;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font:inherit;
+}
+button.primary{background:var(--button2);border-color:#65583f}
+button:hover,.speed-btn:hover{filter:brightness(1.08)}
+.speed-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.speed-btn.active{background:#50452f;border-color:#7a6c4b}
+.small{font-size:.92rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+.track{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:center;
+  background:rgba(26,31,42,.9);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+}
+.track-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #4a5161;color:var(--accent);font-weight:bold
+}
+.track-title{font-size:1.06rem}
+.track-sub{font-size:.92rem;color:var(--muted)}
+.current-track{margin:14px 0 6px;color:var(--accent)}
+.progress{height:7px;background:#252c38;border-radius:999px;overflow:hidden}
+.bar{height:100%;width:0;background:#bca77a}
+.text{white-space:pre-wrap;margin-top:18px}
+.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.inline-note{font-size:.92rem;color:var(--muted)}
+.link-btn{display:inline-block;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="wrap"><div class="card">
-<h1>THE FORGOTTEN NAME</h1>
-<h2>Resonance — Chapter 17 · By CL HARRIS</h2>
-<div class="controls">
-<div class="grid">
-<div><label>Voice</label><select id="voice"></select></div>
-<div><label>Rate <span id="rateVal">0.88</span></label><input id="rate" type="range" min="0.72" max="1.05" step="0.01" value="0.88"></div>
-<div><label>Pitch <span id="pitchVal">0.90</span></label><input id="pitch" type="range" min="0.75" max="1.05" step="0.01" value="0.90"></div>
-</div>
-<button class="primary" onclick="play()">▶ Play</button>
-<button onclick="toggle()">⏯ Pause / Resume</button>
-<button onclick="stopSpeech()">■ Stop</button>
-<button onclick="restart()">↺ Restart</button>
-<div class="status" id="status">Preferred: Google UK English Female — en-GB</div>
-<div class="progress"><div class="bar" id="bar"></div></div>
-<div class="small">Narration profile: intimate, restrained, measured; no suspense-style clue emphasis. Playback position is saved on this device.</div>
-</div>
-<div class="text">Chapter 17
+<div class="wrap">
+  <div class="panel">
+    <div class="topbar">
+      <a class="link-btn" href="index.html">← Back to preview home</a>
+      <div class="speed-group">
+        <span class="small">Speed</span>
+        <button class="speed-btn" data-speed="current" onclick="setSpeed('current')">Current</button>
+        <button class="speed-btn" data-speed="1.5x" onclick="setSpeed('1.5x')">1.5x</button>
+        <button class="speed-btn" data-speed="2x" onclick="setSpeed('2x')">2x</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div><img src="cover.jpg" alt="The Forgotten Name cover art"></div>
+      <div>
+        <div class="kicker">Private Audio Preview</div>
+        <h1>THE FORGOTTEN NAME</h1>
+        <h2>Resonance — Chapter 17 · By CL HARRIS</h2>
+        <p class="lead">Resonance / concealed-truth moment</p>
+        <div class="controls">
+          <button class="primary" onclick="play()">▶ Play</button>
+          <button onclick="togglePlay()">⏯ Pause / Resume</button>
+          <button onclick="restartTrack()">↺ Restart</button>
+          <button onclick="stopSpeech()">■ Stop</button>
+        </div>
+        <div class="current-track" id="status">Ready to play</div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <p class="small" id="voiceStatus">The player will automatically choose the best available English voice, preferring Google UK English Female — en-GB.</p>
+      </div>
+    </div>
+    <div class="text">Chapter 17
 
 Nemi&#x27;s home court kept no list of the dead on its walls. It kept doors. 
 Old panels stood beneath a shelter beside the salt channel, repaired into tables and screens. Hinge 
@@ -150,70 +213,160 @@ without forcing it to deny the first.
 The Federation had not invented recognition. It had formalized some ways people already kept one 
 another legible. The uncertain phrase remained in Sere&#x27;s notes, untranslated enough to resist becoming 
 an answer.</div>
-</div></div>
+  </div>
+</div>
 <script>
-const rawText = "Chapter 17\n\nNemi's home court kept no list of the dead on its walls. It kept doors. \nOld panels stood beneath a shelter beside the salt channel, repaired into tables and screens. Hinge \nmarks, children's heights, smoke stains, and failed paint remained visible beneath new use. \nThe court recognized visitors first through work. Sere carried a repaired axle; Talin carried bread \naccounts. At each courtyard people touched the cart before adding water or food. The gesture looked \nceremonial until Sere saw them checking whether the wheel ran hot. \nAn elder called Nemi by a childhood name as she passed the cart. Nemi answered without turning. \n“Not that name here.” \nThe elder stopped, apologized, and used Nemi. Nothing in the court rearranged to make the refusal \ndramatic. A child still demanded the brake cord; someone still shouted that the south kettle boiled dry. \nThe old name remained part of belonging and ceased to be permission for its public use. \nSere did not ask what it meant. Nemi gave her the axle pin and pointed toward the wheel. \nNemi arrived with the cart and looked first at Sere's hands, then at the axle. “Have you eaten?” \nSere said the train had served tea. Nemi broke a heel from the bread Talin carried and put it on the \ncart rail, where refusing it would require an announcement. Then they shifted a sack toward the left \nwheel and asked Sere to lift while they listened to the hub. \nTalin reached for the heavier end. Nemi watched the angle of her wrist and assigned her the brake \ncord instead. They offered no diagnosis and accepted no thanks. Care appeared as redistributed weight, \nfood within reach, and a task chosen so no one had to name the choosing. \n“The axle before your questions,” Nemi said. “If we break it for your inquiry, you can explain \ncontinuity while we walk home.” \nOne woman denied ever using the cart yet moved every child outside its turning radius before Nemi \npulled the handle. Her body retained the arc. No one interpreted it for her. \n* * * \nA naming meal marked a young person's decision to take responsibility for an abandoned orchard. \nNames were spoken, but capability and relationship were enacted through pruning tools, transport, \nwater, and harvest meals. \nThe keeper chose a pruning knife with a chipped back and a sound edge. An uncle offered the \npolished family blade instead. She refused it because its tang had loosened beneath the wrapping; a \nbeautiful tool that concealed failure was no inheritance she wanted to carry. \nThe argument stayed practical. Who would replace the handle, whose trees would be cut first, and \nwhether responsibility began at the meal or at the first winter pruning mattered more than the object's \nage. The keeper accepted the defective knife only after the crack was marked openly and the repair \nassigned to three hands. \nSere expected a declaration. Nemi handed the keeper a whetstone and asked when the north rows \nhad last been watered. Life in the court continued through duties that could be refused, corrected, and \ntaken up without becoming lore for Sere's case. \nThe young keeper rejected an inherited tool because its handle was split. An uncle called it three \ngenerations of care. An apprentice said displayed tools became lies about labor. The tool went to repair, \nnot reverence. \nTalin named the risk: a family with many witnesses could make its account appear more continuous \nthan a solitary person's truth. Nemi named cases where the court had done exactly that. \n“So this is not a cure,” Sere said. \n“For what?” Nemi asked. \nShe had no answer that did not turn their home into an instrument. \nAn older woman sat beside the cart's former driver and denied knowing him. He poured water to \nthe side her hand reached toward. She found a cracked pin by sound; he steadied the frame before she \nleaned. They allowed anonymous observation for wheel safety and refused relationship review. \nUseful relation continued without complete identity judgment. The boundary held. \nSere felt envy as attention rather than confession. The court could let a relation remain useful \nwithout compelling a complete identity decision. It could also hide cruelty beneath communal certainty. \nNeither record nor practice was innocent. \n* * * \nUnder one door table, paired cuts marked a repair taught by one person and demonstrated by \nanother. Names were optional; two witnesses were not. The oldest visible pair predated the Federation \noffice in the region. \nOne pair had been chiseled out after a master used the marks to claim apprentices' work. Later \nmarks were placed by the learner. A second board, stripped of provenance by flood, remained useful for \ninstruction but not dispute. \nContinuity had degrees. Federation certification crossed a threshold; here an object could retain \npractical value while losing authority. \nAcross neighboring courts the paired cuts meant teacher and learner, owner and repairer, or simply \na repair surviving a season. Similar form did not prove shared origin; it showed communities separating \nresponsibility across people before the Federation called it procedural integrity. \nBeside an older repair, the carpenter showed Sere a damaged term. Its nearest current rendering was \n*the forgotten name*, though he warned that *name* carried too much identity and too little relation. \n“Is it a category?” Sere asked. \n“It is what one translator wrote after the older word stopped agreeing with itself.” \nNemi added, “Useful language. Insufficient language.” \nSere recorded the rendering as uncertain local translation and did not promote it into the case \nclassification. \nThe carpenter offered no origin story. Paint layers established only that the damaged wording had \nbeen copied after one repair and before another. Nemi refused to let age turn approximation into \nauthority. Sere kept the phrase because it named the gap badly enough to remain open. \nThe pruning tool exposed the difference between their methods. Sere found a replacement pin \ndriven across the grain. Nemi found where sap entered the crack only when the blade was used. Material \nsequence explained the defect; practice exposed it. \nThey repaired the handle and made paired cuts only after the orchard keeper repeated the repair. \nKnowledge moved among hands and became harder to erase because responsibility for it was shared. \nThe work resisted elegant division. Sere found the replacement pin driven across the grain; Nemi \nfound the place where sap entered only when the keeper leaned into a living branch. The keeper found a \nthird fault neither had seen: the ferrule twisted under a left-handed grip. \nThey took the tool apart on a door-table. Sere measured the pin. Nemi shaved the damp edge by \nfeel. The keeper rejected their first fit because it would hold for demonstration and fail in an orchard. On \nthe second attempt the blade settled without turning. No single method owned the repair. \nAt the platform Nemi carried two cracked handles for apprentices while Sere carried salt fruit from \nan aunt who regarded travel as a form of underfeeding. Sere offered to redistribute the load. Nemi gave \nher the fruit and kept the handles. \n“You are the one who forgets meals,” they said. \nThe answer placed Sere inside an ordinary judgment rather than outside the court as its examiner. \nShe ate one slice before the train arrived. Salt caught in the split skin of her thumb where the repaired \ntool had slipped. \nThe older woman called after the former driver to slow before the lower turn. Sere did not ask how \nshe knew. Their refusal of relationship review was part of the truth, not an obstacle between Sere and \nemotional completion. \nBefore departure, Sere requested a rubbing of the oldest marks. The carpenter refused. \n“You let me inspect them.” \n“Inspection leaves with your eyes. A copy leaves without you.” \nShe entered measurements made by sight and marked their uncertainty. \nFrom the train, the shelter of doors became dark rectangles, each retaining marks from a house it no \nlonger enclosed. Reuse had not restored those houses. It had given damaged material another duty \nwithout forcing it to deny the first. \nThe Federation had not invented recognition. It had formalized some ways people already kept one \nanother legible. The uncertain phrase remained in Sere's notes, untranslated enough to resist becoming \nan answer.";
-const mode = "resonance";
-let voices=[], chunks=[], index=0, speaking=false;
-const voiceSel=document.getElementById('voice'), rate=document.getElementById('rate'), pitch=document.getElementById('pitch');
-const rateVal=document.getElementById('rateVal'), pitchVal=document.getElementById('pitchVal');
-rate.oninput=()=>rateVal.textContent=rate.value; pitch.oninput=()=>pitchVal.textContent=pitch.value;
+
+let voices = [];
+let speaking = false;
+let chunks = [];
+let chunkIndex = 0;
+let selectedSpeed = localStorage.getItem('tfn_speed') || 'current';
 
 function loadVoices(){
- voices=speechSynthesis.getVoices();
- voiceSel.innerHTML='';
- voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' — '+v.lang;voiceSel.appendChild(o);});
- let i=voices.findIndex(v=>/Google UK English Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/Google.*Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en/i.test(v.lang));
- if(i>=0){voiceSel.value=i;document.getElementById('status').textContent='Selected: '+voices[i].name+' — '+voices[i].lang;}
+  voices = speechSynthesis.getVoices();
 }
-speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
 
-function makeChunks(t){
- const paras=t.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
- const out=[];
- for(const p of paras){
-   if(p.length<=850){out.push(p);continue;}
-   const parts=p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g)||[p];
-   let cur='';
-   for(const s of parts){
-      if((cur+' '+s).length>850 && cur){out.push(cur.trim());cur=s;}
-      else cur += (cur?' ':'')+s;
-   }
-   if(cur.trim())out.push(cur.trim());
- }
- return out;
+function bestVoice(){
+  let v = voices.find(v => /Google UK English Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /Google.*Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en/i.test(v.lang));
+  return v || null;
 }
-chunks=makeChunks(rawText);
-const key='TFN_' + "04" + '_pos';
-index=parseInt(localStorage.getItem(key)||'0');
-if(index>=chunks.length)index=0;
-updateProgress();
 
-function modeRate(){
- let r=parseFloat(rate.value);
- if(mode==='resonance')r-=0.025;
- if(mode==='emotion')r-=0.03;
- if(mode==='preview')r-=0.015;
- if(mode==='warmth')r+=0.01;
- return Math.max(.68, Math.min(1.1,r));
+function makeChunks(text){
+  const paras = text.split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+  const out = [];
+  for (const p of paras){
+    if (p.length <= 850){ out.push(p); continue; }
+    const parts = p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g) || [p];
+    let cur = '';
+    for (const s of parts){
+      if ((cur + ' ' + s).length > 850 && cur){
+        out.push(cur.trim());
+        cur = s;
+      } else {
+        cur += (cur ? ' ' : '') + s;
+      }
+    }
+    if (cur.trim()) out.push(cur.trim());
+  }
+  return out;
 }
+
+function baseRateFor(mode){
+  let r = 0.88;
+  if (mode === 'resonance') r -= 0.025;
+  if (mode === 'emotion') r -= 0.03;
+  if (mode === 'preview') r -= 0.015;
+  if (mode === 'warmth') r += 0.01;
+  return r;
+}
+
+function effectiveRate(mode){
+  const base = baseRateFor(mode);
+  if (selectedSpeed === '1.5x') return Math.min(10, base * 1.5);
+  if (selectedSpeed === '2x') return Math.min(10, base * 2);
+  return base;
+}
+
+function setSpeed(v){
+  selectedSpeed = v;
+  localStorage.setItem('tfn_speed', v);
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.speed === v);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => setSpeed(selectedSpeed));
+
+function stopSpeech(){
+  speaking = false;
+  speechSynthesis.cancel();
+}
+
+const trackText = "Chapter 17\n\nNemi's home court kept no list of the dead on its walls. It kept doors. \nOld panels stood beneath a shelter beside the salt channel, repaired into tables and screens. Hinge \nmarks, children's heights, smoke stains, and failed paint remained visible beneath new use. \nThe court recognized visitors first through work. Sere carried a repaired axle; Talin carried bread \naccounts. At each courtyard people touched the cart before adding water or food. The gesture looked \nceremonial until Sere saw them checking whether the wheel ran hot. \nAn elder called Nemi by a childhood name as she passed the cart. Nemi answered without turning. \n“Not that name here.” \nThe elder stopped, apologized, and used Nemi. Nothing in the court rearranged to make the refusal \ndramatic. A child still demanded the brake cord; someone still shouted that the south kettle boiled dry. \nThe old name remained part of belonging and ceased to be permission for its public use. \nSere did not ask what it meant. Nemi gave her the axle pin and pointed toward the wheel. \nNemi arrived with the cart and looked first at Sere's hands, then at the axle. “Have you eaten?” \nSere said the train had served tea. Nemi broke a heel from the bread Talin carried and put it on the \ncart rail, where refusing it would require an announcement. Then they shifted a sack toward the left \nwheel and asked Sere to lift while they listened to the hub. \nTalin reached for the heavier end. Nemi watched the angle of her wrist and assigned her the brake \ncord instead. They offered no diagnosis and accepted no thanks. Care appeared as redistributed weight, \nfood within reach, and a task chosen so no one had to name the choosing. \n“The axle before your questions,” Nemi said. “If we break it for your inquiry, you can explain \ncontinuity while we walk home.” \nOne woman denied ever using the cart yet moved every child outside its turning radius before Nemi \npulled the handle. Her body retained the arc. No one interpreted it for her. \n* * * \nA naming meal marked a young person's decision to take responsibility for an abandoned orchard. \nNames were spoken, but capability and relationship were enacted through pruning tools, transport, \nwater, and harvest meals. \nThe keeper chose a pruning knife with a chipped back and a sound edge. An uncle offered the \npolished family blade instead. She refused it because its tang had loosened beneath the wrapping; a \nbeautiful tool that concealed failure was no inheritance she wanted to carry. \nThe argument stayed practical. Who would replace the handle, whose trees would be cut first, and \nwhether responsibility began at the meal or at the first winter pruning mattered more than the object's \nage. The keeper accepted the defective knife only after the crack was marked openly and the repair \nassigned to three hands. \nSere expected a declaration. Nemi handed the keeper a whetstone and asked when the north rows \nhad last been watered. Life in the court continued through duties that could be refused, corrected, and \ntaken up without becoming lore for Sere's case. \nThe young keeper rejected an inherited tool because its handle was split. An uncle called it three \ngenerations of care. An apprentice said displayed tools became lies about labor. The tool went to repair, \nnot reverence. \nTalin named the risk: a family with many witnesses could make its account appear more continuous \nthan a solitary person's truth. Nemi named cases where the court had done exactly that. \n“So this is not a cure,” Sere said. \n“For what?” Nemi asked. \nShe had no answer that did not turn their home into an instrument. \nAn older woman sat beside the cart's former driver and denied knowing him. He poured water to \nthe side her hand reached toward. She found a cracked pin by sound; he steadied the frame before she \nleaned. They allowed anonymous observation for wheel safety and refused relationship review. \nUseful relation continued without complete identity judgment. The boundary held. \nSere felt envy as attention rather than confession. The court could let a relation remain useful \nwithout compelling a complete identity decision. It could also hide cruelty beneath communal certainty. \nNeither record nor practice was innocent. \n* * * \nUnder one door table, paired cuts marked a repair taught by one person and demonstrated by \nanother. Names were optional; two witnesses were not. The oldest visible pair predated the Federation \noffice in the region. \nOne pair had been chiseled out after a master used the marks to claim apprentices' work. Later \nmarks were placed by the learner. A second board, stripped of provenance by flood, remained useful for \ninstruction but not dispute. \nContinuity had degrees. Federation certification crossed a threshold; here an object could retain \npractical value while losing authority. \nAcross neighboring courts the paired cuts meant teacher and learner, owner and repairer, or simply \na repair surviving a season. Similar form did not prove shared origin; it showed communities separating \nresponsibility across people before the Federation called it procedural integrity. \nBeside an older repair, the carpenter showed Sere a damaged term. Its nearest current rendering was \n*the forgotten name*, though he warned that *name* carried too much identity and too little relation. \n“Is it a category?” Sere asked. \n“It is what one translator wrote after the older word stopped agreeing with itself.” \nNemi added, “Useful language. Insufficient language.” \nSere recorded the rendering as uncertain local translation and did not promote it into the case \nclassification. \nThe carpenter offered no origin story. Paint layers established only that the damaged wording had \nbeen copied after one repair and before another. Nemi refused to let age turn approximation into \nauthority. Sere kept the phrase because it named the gap badly enough to remain open. \nThe pruning tool exposed the difference between their methods. Sere found a replacement pin \ndriven across the grain. Nemi found where sap entered the crack only when the blade was used. Material \nsequence explained the defect; practice exposed it. \nThey repaired the handle and made paired cuts only after the orchard keeper repeated the repair. \nKnowledge moved among hands and became harder to erase because responsibility for it was shared. \nThe work resisted elegant division. Sere found the replacement pin driven across the grain; Nemi \nfound the place where sap entered only when the keeper leaned into a living branch. The keeper found a \nthird fault neither had seen: the ferrule twisted under a left-handed grip. \nThey took the tool apart on a door-table. Sere measured the pin. Nemi shaved the damp edge by \nfeel. The keeper rejected their first fit because it would hold for demonstration and fail in an orchard. On \nthe second attempt the blade settled without turning. No single method owned the repair. \nAt the platform Nemi carried two cracked handles for apprentices while Sere carried salt fruit from \nan aunt who regarded travel as a form of underfeeding. Sere offered to redistribute the load. Nemi gave \nher the fruit and kept the handles. \n“You are the one who forgets meals,” they said. \nThe answer placed Sere inside an ordinary judgment rather than outside the court as its examiner. \nShe ate one slice before the train arrived. Salt caught in the split skin of her thumb where the repaired \ntool had slipped. \nThe older woman called after the former driver to slow before the lower turn. Sere did not ask how \nshe knew. Their refusal of relationship review was part of the truth, not an obstacle between Sere and \nemotional completion. \nBefore departure, Sere requested a rubbing of the oldest marks. The carpenter refused. \n“You let me inspect them.” \n“Inspection leaves with your eyes. A copy leaves without you.” \nShe entered measurements made by sight and marked their uncertainty. \nFrom the train, the shelter of doors became dark rectangles, each retaining marks from a house it no \nlonger enclosed. Reuse had not restored those houses. It had given damaged material another duty \nwithout forcing it to deny the first. \nThe Federation had not invented recognition. It had formalized some ways people already kept one \nanother legible. The uncertain phrase remained in Sere's notes, untranslated enough to resist becoming \nan answer.";
+const trackMode = "resonance";
+const storageKey = 'tfn_04_pos';
+
+function updateStatus(msg){ document.getElementById('status').textContent = msg; }
+function updateBar(){
+  const pct = (chunkIndex / Math.max(1, chunks.length)) * 100;
+  document.getElementById('bar').style.width = pct + '%';
+}
+
+function announceVoice(){
+  const v = bestVoice();
+  if (v) {
+    document.getElementById('voiceStatus').textContent = 'Voice in use: ' + v.name + ' — ' + v.lang;
+  }
+}
+
 function speakNext(){
- if(index>=chunks.length){speaking=false;index=0;localStorage.setItem(key,'0');updateProgress();document.getElementById('status').textContent='Finished';return;}
- const u=new SpeechSynthesisUtterance(chunks[index]);
- const v=voices[parseInt(voiceSel.value)];
- if(v)u.voice=v;
- u.rate=modeRate();u.pitch=parseFloat(pitch.value);u.volume=1;
- u.onend=()=>{index++;localStorage.setItem(key,String(index));updateProgress();if(speaking)setTimeout(speakNext, mode==='preview'?700:450);};
- u.onerror=()=>{speaking=false;document.getElementById('status').textContent='Playback interrupted — press Play to resume';};
- speechSynthesis.speak(u);
+  if (chunkIndex >= chunks.length){
+    speaking = false;
+    chunkIndex = 0;
+    localStorage.setItem(storageKey, '0');
+    updateBar();
+    updateStatus('Finished');
+    return;
+  }
+  const utter = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+  const v = bestVoice();
+  if (v) utter.voice = v;
+  utter.rate = effectiveRate(trackMode);
+  utter.pitch = 0.90;
+  utter.volume = 1;
+  utter.onend = () => {
+    chunkIndex++;
+    localStorage.setItem(storageKey, String(chunkIndex));
+    updateBar();
+    if (speaking) setTimeout(speakNext, trackMode === 'preview' ? 650 : 420);
+  };
+  utter.onerror = () => {
+    speaking = false;
+    updateStatus('Playback interrupted — press Play to continue');
+  };
+  speechSynthesis.speak(utter);
 }
-function play(){if(speechSynthesis.paused){speechSynthesis.resume();return;} if(speaking)return; speaking=true; speakNext();}
-function toggle(){if(speechSynthesis.speaking){if(speechSynthesis.paused)speechSynthesis.resume();else speechSynthesis.pause();}}
-function stopSpeech(){speaking=false;speechSynthesis.cancel();}
-function restart(){stopSpeech();index=0;localStorage.setItem(key,'0');updateProgress();}
-function updateProgress(){document.getElementById('bar').style.width=((index/Math.max(1,chunks.length))*100)+'%';}
+
+function play(){
+  announceVoice();
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); return; }
+  if (speaking) return;
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  speaking = true;
+  updateStatus('Playing');
+  speakNext();
+}
+
+function togglePlay(){
+  if (!speechSynthesis.speaking) return;
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); }
+  else { speechSynthesis.pause(); updateStatus('Paused'); }
+}
+
+function restartTrack(){
+  stopSpeech();
+  chunks = makeChunks(trackText);
+  chunkIndex = 0;
+  localStorage.setItem(storageKey, '0');
+  updateBar();
+  play();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  announceVoice();
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  updateBar();
+});
 </script>
-</body></html>
+</body>
+</html>

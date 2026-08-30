@@ -5,45 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Emotion — Chapter 32 — The Forgotten Name</title>
 <style>
-:root{--bg:#0d0f13;--panel:#16191f;--line:#292e38;--text:#f0f2f5;--muted:#aeb5c0;--accent:#d1c19a}
+:root{
+  --bg:#0b0d11;
+  --panel:#141821;
+  --panel2:#1a1f2a;
+  --line:#2b313e;
+  --text:#f0f2f5;
+  --muted:#b1b7c1;
+  --accent:#d0c09a;
+  --button:#262c38;
+  --button2:#39311f;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.64}
-.wrap{max-width:900px;margin:auto;padding:28px 18px 80px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
-h1{font-size:1.8rem;margin:0} h2{color:var(--accent);font-size:1.15rem;font-weight:normal;margin:.35rem 0 1.2rem}
-.controls{position:sticky;top:0;background:rgba(22,25,31,.97);padding:12px 0;z-index:3}
-button{background:#252a34;color:white;border:1px solid #3a414e;border-radius:9px;padding:10px 13px;margin:4px;cursor:pointer}
-button.primary{background:#493f2f}
-select,input{width:100%;margin:5px 0 12px}
-select{background:#0e1116;color:white;border:1px solid var(--line);padding:9px;border-radius:7px}
-.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.status{color:var(--accent);margin:8px 0}
-.small{color:var(--muted);font-size:.9rem}
-.text{white-space:pre-wrap;margin-top:24px}
-.progress{height:5px;background:#252a34;border-radius:5px;overflow:hidden;margin-top:10px}
-.bar{height:100%;width:0;background:#9e9377}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0b0d11 0%, #111621 100%);
+  color:var(--text);
+  font-family:Georgia, "Times New Roman", serif;
+  line-height:1.65;
+}
+a{color:#e3d3ad}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 16px 70px}
+.panel{background:rgba(20,24,33,.96);border:1px solid var(--line);border-radius:18px;padding:20px}
+.hero{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
+.hero img{width:100%;height:auto;border-radius:12px;border:1px solid #3a3f4a;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+@media (max-width:850px){.hero{grid-template-columns:1fr}.hero img{max-width:380px}}
+.kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-size:.9rem}
+h1{font-size:2.1rem;margin:.25rem 0 .2rem}
+h2{font-size:1.2rem;margin:0 0 .8rem;color:var(--accent);font-weight:normal}
+p.lead{font-size:1.04rem;color:var(--muted);margin-top:.2rem}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+button,.speed-btn{
+  background:var(--button);
+  color:var(--text);
+  border:1px solid #40485a;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font:inherit;
+}
+button.primary{background:var(--button2);border-color:#65583f}
+button:hover,.speed-btn:hover{filter:brightness(1.08)}
+.speed-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.speed-btn.active{background:#50452f;border-color:#7a6c4b}
+.small{font-size:.92rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+.track{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:center;
+  background:rgba(26,31,42,.9);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+}
+.track-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #4a5161;color:var(--accent);font-weight:bold
+}
+.track-title{font-size:1.06rem}
+.track-sub{font-size:.92rem;color:var(--muted)}
+.current-track{margin:14px 0 6px;color:var(--accent)}
+.progress{height:7px;background:#252c38;border-radius:999px;overflow:hidden}
+.bar{height:100%;width:0;background:#bca77a}
+.text{white-space:pre-wrap;margin-top:18px}
+.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.inline-note{font-size:.92rem;color:var(--muted)}
+.link-btn{display:inline-block;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="wrap"><div class="card">
-<h1>THE FORGOTTEN NAME</h1>
-<h2>Emotion — Chapter 32 · By CL HARRIS</h2>
-<div class="controls">
-<div class="grid">
-<div><label>Voice</label><select id="voice"></select></div>
-<div><label>Rate <span id="rateVal">0.88</span></label><input id="rate" type="range" min="0.72" max="1.05" step="0.01" value="0.88"></div>
-<div><label>Pitch <span id="pitchVal">0.90</span></label><input id="pitch" type="range" min="0.75" max="1.05" step="0.01" value="0.90"></div>
-</div>
-<button class="primary" onclick="play()">▶ Play</button>
-<button onclick="toggle()">⏯ Pause / Resume</button>
-<button onclick="stopSpeech()">■ Stop</button>
-<button onclick="restart()">↺ Restart</button>
-<div class="status" id="status">Preferred: Google UK English Female — en-GB</div>
-<div class="progress"><div class="bar" id="bar"></div></div>
-<div class="small">Narration profile: intimate, restrained, measured; no suspense-style clue emphasis. Playback position is saved on this device.</div>
-</div>
-<div class="text">Chapter 32
+<div class="wrap">
+  <div class="panel">
+    <div class="topbar">
+      <a class="link-btn" href="index.html">← Back to preview home</a>
+      <div class="speed-group">
+        <span class="small">Speed</span>
+        <button class="speed-btn" data-speed="current" onclick="setSpeed('current')">Current</button>
+        <button class="speed-btn" data-speed="1.5x" onclick="setSpeed('1.5x')">1.5x</button>
+        <button class="speed-btn" data-speed="2x" onclick="setSpeed('2x')">2x</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div><img src="cover.jpg" alt="The Forgotten Name cover art"></div>
+      <div>
+        <div class="kicker">Private Audio Preview</div>
+        <h1>THE FORGOTTEN NAME</h1>
+        <h2>Emotion — Chapter 32 · By CL HARRIS</h2>
+        <p class="lead">Major emotional confrontation</p>
+        <div class="controls">
+          <button class="primary" onclick="play()">▶ Play</button>
+          <button onclick="togglePlay()">⏯ Pause / Resume</button>
+          <button onclick="restartTrack()">↺ Restart</button>
+          <button onclick="stopSpeech()">■ Stop</button>
+        </div>
+        <div class="current-track" id="status">Ready to play</div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <p class="small" id="voiceStatus">The player will automatically choose the best available English voice, preferring Google UK English Female — en-GB.</p>
+      </div>
+    </div>
+    <div class="text">Chapter 32
 
 The city conservators would not let Corren touch the copper sleeve. 
 They worked beneath a canvas roof beside the parcel depot while rain lifted grit from the paving. 
@@ -370,70 +433,160 @@ the evidence pursuing them.
 Corren took the envelope. 
 The door remained open. 
 She remained outside.</div>
-</div></div>
+  </div>
+</div>
 <script>
-const rawText = "Chapter 32\n\nThe city conservators would not let Corren touch the copper sleeve. \nThey worked beneath a canvas roof beside the parcel depot while rain lifted grit from the paving. \nThe culvert objects remained in shallow trays packed with their own silt. Sere stood outside the marked \nline. Talin's red observer cord kept her beside Sere. Corren's compromised seal admitted no one. \nThe senior conservator opened the sleeve with wooden wedges. The inward fold held a second layer \nagainst the corroded wall: a narrow strip of mineral paper, far younger than the woven fiber recovered \nbeneath the city. \nIt bore a custody number from the restricted comparison register Corren had defended. \nCorren asked the conservator to stop. \n“On whose authority?” Sere said. \n“The number identifies a protected person.” \n“It identifies a record.” \n“The distinction may not survive opening.” \nCity custody required preservation of the object. Federation privacy required protection of living \nsubjects. Neither rule gave Corren control. \nTalin said, “Read only the handling fields. No designation, location, or relationship description.” \nThe fields had been added fourteen years earlier, when the sleeve was found during a drain repair \nand briefly entered Federation custody. One entry recorded transfer to a restricted surviving anchor \nunder paired seal. A later entry recorded contact requested by I.V., professional examiner. It required a \ncontinuity witness. \nThe witness field carried Sere's professional number. \nHer license had been active but junior then. She remembered no request, no sleeve, no restricted \nperson. \nCorren's countersignature appeared beneath the risk review. \nSere read the date twice. “You knew before Ilyra died.” \n“I knew she requested contact.” \n“You knew she named me.” \n“As continuity witness.” \n“You knew what that function meant.” \nCorren's attention went to the conservator's hands. “I knew what Ilyra believed it meant.” \nThe answer was narrower than denial. \nRecognition came first, unwelcome and exact. Corren had not merely encountered Sere's number in \nthe present inquiry; she had known its older significance well enough to measure risk around it. The \nrecognition should have restored a missing edge to Sere's history. Instead it showed how long that edge \nhad been held beyond her reach. \nSere felt the old professional impulse to reward precision. Corren had answered only what the field \nestablished. That discipline was one of the reasons Sere had trusted her. Now the same discipline \noutlined the betrayal without softening it. Corren could keep every sentence accurate and still have built \nfourteen years in which Sere was the least informed person in decisions about Sere. \nThe handling strip showed that the meeting occurred. Ilyra entered under one seal. A second person \nentered under witness status; the number had been abraded until only its final two digits remained. They \nmatched Sere's. \nAbrasion was not proof. The named request was. \nThe final field recorded comparison consequence observed and immediate separation of all three \nparticipants. Corren had signed that field too. \n“What consequence?” Sere asked. \n“The field cannot be read without the protected annex.” \n“Can you read the annex?” \nCorren waited one beat too long. “I read it then.” \nRain hammered the canvas. A conservator moved a bucket beneath a seam. The work continued \naround the sentence because old material could not wait for private injury. \n“When did you first learn I might be at risk?” Sere asked. \n“That day.” \n“Before or after the meeting?” \n“After.” \n“When did you tell me?” \nCorren did not answer. \nThe hurt found structure. \n“When I reopened Ilyra's case, did you know the relationship between us was operationally \nrelevant?” \n“Yes.” \n“When you selected the incidents in the restricted comparison register?” \n“Yes.” \n“When you watched me connect sites through practices absent from my record?” \n“Yes.” \n“When I surrendered examiner standing without knowing why the channel treated me as a subject?” \nCorren looked at her. “Yes.” \nTalin asked the conservator to seal the handling strip under city custody and record Corren as a \nprior signatory, not present authority. \nThe change fit one line. \nCorren no longer controlled the oldest evidence she recognized. \nThe conservator asked who should receive notice when the strip entered the city catalog. Ordinary \nrules notified every prior signatory. That would alert the restricted office whose current route remained \nunnamed. \nSere could omit Corren and keep the discovery quiet. The omission would repeat the act she was \nexposing: deciding another person's relevant knowledge was too dangerous to permit. \n“Notify her,” Sere said. “And notify Talin.” \n“Observer Senn has no evidence standing.” \n“Then notify her as a named prior custodian.” \nThe city could accept that designation only if Corren certified it. \nCorren signed without asking to recover authority. \nThe conservators lifted the woven strip into a humidity box. A junior worker called measurements \nwhile another recorded them. Their calm voices kept the old material separate from the breach beside it. \n“Did you know the sleeve was here?” Sere asked. \n“No. I knew a restricted object had been returned to place after the meeting. The annex did not \nidentify which object or place.” \n“Did you search?” \n“I was prohibited from reconstructing the route.” \n“And you obeyed.” \n“I believed the prohibition protected the anchor.” \nThe answer limited Corren's knowledge. It also showed how readily she had accepted an authority \nthat denied Sere the same choice. \nRainwater crossed the paving toward the open culvert. The workers stopped to build a ridge of \nsandbags. Sere joined them with her injured hand wrapped in dry cloth. Corren took the opposite end of \na heavy bag. \nThey carried it together because water did not honor broken trust. \nAt the culvert mouth, Sere released first. \n* * * \nThey crossed the market because Sere would not enter the Federation interview room under \nCorren's sponsorship. \nMorning vendors replaced rain-spoiled labels. Talin bought a paper cone of onions, handed Sere \none, realized what she had done, and took it back. \nNeither laughed. \nThey stopped beneath the tram awning. Corren remained an arm's length away, outside the space \nTalin ordinarily left for a colleague. \n“Tell me what you knew,” Sere said. \n“The restricted person had remained stable through separated custody, place-bound practices, and \nlimited contact. Ilyra believed direct relational continuity could repair a gap in one of those supports.” \n“Did it?” \n“Something changed after the meeting.” \n“What?” \n“The anchor anticipated a route that had not been disclosed. You recognized a handling rule absent \nfrom every surviving placement record. Ilyra reported emotional certainty without event recall.” \nNo scene returned. No voice. The absence stayed absent. \n“And you separated us.” \n“I ordered separation of source material and participants. The restricted person stabilized. Your \nanticipations stopped being documented.” \n“Because they stopped?” \n“Because Ilyra removed you from the reporting channel.” \nThe distinction struck harder than accusation. \n“You knew she continued working with me.” \n“I knew she continued assigning you authority. I did not know every contact.” \n“Did you warn her?” \n“Repeatedly.” \n“Did you warn me?” \n“No.” \nA tram arrived. People crowded beneath the awning. Sere stepped away from Corren rather than let \nordinary pressure close the distance between them. \n“Why?” Talin asked. \n“Because directed attention changed outcomes in cases I had seen. People told they might hold \ncontinuity began testing themselves and those around them. Comparison sometimes spread anticipations \nacross separated records and practices. I believed describing the risk to Sere could increase it.” \n“Believed,” Sere said. \n“Yes.” \n“Evidence?” \n“Incomplete cases. Biased selection. Some ordinary suggestion. Some changes I could not explain.” \nCorren did not inflate her certainty to defend herself. It made the breach harder. \n“You decided uncertainty gave you authority over mine.” \n“I decided an undisclosed hazard justified limiting disclosure.” \n“About my work?” \n“About your exposure.” \n“About me.” \nCorren's silence conceded the center. \nAnger arrived without choosing a clean object. It fixed first on Corren, whose caution had become \npossession. Then it turned toward Ilyra, who had apparently treated Sere's authority as transferable into a \ndanger Sere could not now remember accepting. Then it found Sere herself: the earlier Sere who might \nhave agreed, might have trusted, might have asked the wrong narrow question and called the answer \nsufficient. \nShe could prosecute none of those possibilities. Corren's silence established no motive beyond the \nlimits of the record. Ilyra's planning established neither deception nor consent. The blank in Sere's \nmemory established only that she could not recover the terms by which other people still claimed to \nhave acted. Hurt supplied defendants faster than evidence supplied charges. \nIlyra had placed authority in Sere's hands, perhaps without enough explanation. Corren had \nremoved information from them. One had risked dependence. The other had enforced ignorance. \nProtection complicated both and absolved neither. \n“What consequence did your silence have?” Sere asked. \n“You continued linked-site comparison without knowing it might affect you. You treated the \napprenticeship gap as evidence to solve rather than exposure to manage. You consented to restrictions \nwithout the history required to judge them. And you trusted my recommendations as if I had disclosed \nmy material interests.” \nThe confession arrived only after the record made it unavoidable. \n“Material interests?” Talin said. \n“I signed the old separation. If the risk model was wrong, my restrictions helped erase Sere's access \nto her own history. If it was right, my later silence may still have increased the harm by leaving Ilyra to \nmanage it alone.” \n“You do not get to call the choice necessary,” Sere said. “You can call it yours.” \nCorren accepted the sentence. \n* * * \nAt Talin's review room, the physical key no longer admitted Corren. \nSere had changed the evidence designation from sponsored medical review to subject-held \ncontinuity inquiry. The change ended Corren's formal access and the exception that allowed Talin to act \nunder her seal. \n“My observer standing terminates with sponsorship,” Talin said. \n“I know.” \n“You will have no counsel inside the room.” \n“I know.” \n“This costs you the only review route currently open.” \nSere signed. \nThe deeper answer had taken Corren's authority and Talin's formal presence in the same act. \nThey reconstructed no memory. They compared preserved actions. \nFourteen years earlier, Ilyra requested contact with a restricted surviving anchor and named Sere as \nthe witness whose continuity mattered. Corren reviewed the meeting and documented destabilization \nrisk. Afterward she ordered separation. In the present inquiry, she recognized Sere's network function, \nselected comparison cases, anticipated linked-site risk, and withheld the earlier exposure. \nOne contradiction remained. Corren had told the licensing panel that her register contained cases in \nwhich comparison plausibly altered the evidence environment. The old meeting qualified, yet its \naggregate had been excluded. \n“Why?” Sere asked through the open door. \nCorren stood in the corridor and did not cross the boundary. \n“Ilyra challenged the classification. She argued the meeting exposed a preexisting relation rather \nthan creating a new effect. The panel sealed the case as unresolved.” \n“You selected the denominator.” \n“Yes.” \n“You omitted the case that most directly concerned me.” \n“Yes.” \n“Because disclosure might change me.” \n“And because including a disputed case as evidence of hazard would have been methodologically \nfalse.” \nTwo reasons. One defensible. One unreviewable. The breach lived where Corren had made both \ndecisions alone. \nTalin placed the old incident form on the threshold. \n“Did you know Sere was part of Ilyra's anchor network?” \n“I knew Ilyra treated her as operationally necessary across separated supports.” \n“Did you know instability could move toward her?” \n“I knew the meeting created that risk. I did not know whether it had.” \n“What did I know when I entered?” Sere asked. \n“The request described a continuity consultation. Ilyra said you had agreed to witness disputed \nhandling.” \n“Did you verify my agreement?” \n“No.” \n“Why?” \n“Ilyra held your reciprocal professional authorization. At the time, I treated that as sufficient.” \n“For ordinary custody.” \n“Yes.” \n“This was not ordinary custody.” \n“No.” \nCorren had relied on Ilyra where risk required her to ask Sere. Later she relied on risk where \nautonomy required her to tell Sere. In both directions, someone else had decided what Sere's consent \ncould carry. \nWhat she had lost was not only memory of an event. She had lost custody of the person whose \nchoices still constrained the present. If that earlier woman had consented, Sere could not ask what she \nhad understood, how long she had agreed to be bound, or what condition would have ended the \nagreement. If she had refused, Sere could not produce the refusal. Either possibility existed now as \nmaterial other people could invoke and she could not examine from inside her own life. \nThe unfairness tempted her toward an easy correction: treat every undocumented choice as \ncoercion, every silence as proof of concealment, every later protection as evidence that Ilyra had known \nthe original act was wrong. The correction would return moral custody by inventing evidentiary custody. \nSere recognized the bargain because institutions made it whenever a clean finding mattered more than a \ndamaged source. \nShe let the anger remain divided. Corren had withheld. Ilyra had arranged. Sere might once have \nagreed. The system had allowed reciprocal professional authority to stand in for a present question. \nThose facts and possibilities did not cancel one another, and none authorized her to manufacture the \nmissing answer. \nThe protected strip humiliated Sere more than an accusation would have. Other people possessed \nthe route by which she had once known Ilyra, while Sere held only its consequences. Anger moved \ntoward Corren, then toward Ilyra, then back toward the woman Sere had been and could not question. \nShe could not know whether she had consented to controlled contact, to reciprocal risk, or to the \nlater separation. A missing consent record did not prove refusal. A surviving authority did not bind the \npresent. \nCorren declined to characterize what Sere and Ilyra had been to one another. \nSere wanted the secrecy itself to become proof. \nShe stopped. \n“Record the refusal.” \nTalin recorded it without motive. Sere's pain remained real and non-evidentiary. \nTalin asked whether Corren spoke with Sere after the separation. \n“I conducted a routine exposure interview under a general placement review.” \n“You questioned her without disclosing the event being assessed.” \n“Yes.” \nSere remembered no interview. She remembered a season of forms appearing without cases \nattached and irritation at being asked whether familiar corridors felt altered. The emotional fit returned \nwithout a scene. She did not promote it to memory. \n“What did I answer?” \n“No undisclosed anticipation. No unexplained recognition. You reported dreams about unfinished \nwork but refused to classify them as evidence.” \nThat sounded like Sere. It did not give the interview back to her. \nThe likeness was intimate in the worst way. Corren possessed a sentence shaped like Sere's mind, \ndated to a season Sere could not enter. For an instant she wanted to claim it as continuity: proof that the \nwoman in the forms was still here. Then she wanted to reject it because Corren had preserved it. Neither \ndesire altered custody. A recognizable method was not a recovered memory, and an adversarial custodian \ndid not make an authentic record false. \n“And you concluded?” \n“No active effect established. Continued observation without direct prompts.” \n“How long?” \n“Six months.” \n“You did not merely withhold a warning,” Sere said. “You converted my ordinary life into a risk \nrecord.” \n“Yes.” \n“Did Ilyra know?” \n“She discovered it in the fourth month and ended my access.” \nThe old objection had been more than methodological dispute. Ilyra had stopped Corren from \nwatching Sere without consent. \nSere gained one fact about Ilyra and lost the ability to receive it cleanly. Ilyra had protected her after \nhelping place her at risk. \nBetrayal and protection occupied the same act without resolving each other. Sere could not turn \nIlyra's intervention into absolution; four months of observation had already happened. She could not \nturn the earlier risk into proof that Ilyra had knowingly sacrificed her. Other people held both pieces. \nSere received them as findings about her own past and still lacked standing to question the woman at \ntheir center. \nMethod returned because nothing else could give the loss a boundary. Sere separated the \nauthenticated objection, Corren's account of its timing, and the meaning she wanted to assign. She could \ncertify that Ilyra ended access. She could infer that consent mattered to the objection. She could not \ncertify why Ilyra waited, what she had known at the meeting, or what she would have called the relation \nbetween them. \n“Did you withhold that material truth while she made decisions about contact, comparison, and \nstanding?” \n“Yes.” \nSere removed Corren's risk seal from the active file. The wax broke cleanly. She placed both pieces \nin a plain envelope and returned it across the threshold. \n“You may submit evidence. You may not classify my access to it.” \n“May I continue medical monitoring if you request it?” Corren asked. \nThe careful conditional arrived too late to be neutral. \n“No.” \nThe answer cost Sere the only practitioner in reach who understood restricted-anchor risk. She \naccepted the exposure rather than let necessity erase the boundary she had made. \nTalin wrote the refusal into the open record. “Sere declines Corren's monitoring. She does not \ndecline care.” \n“I did not ask you to qualify it.” \n“The institution will otherwise record that you refused all care.” \nSere read the sentence. Talin was protecting process, not interpreting feeling. \n“Keep it.” \nThey requested ordinary baseline care from a city physician with no restricted-case authority. Until \nthe appointment, Sere would hold her symptom log under dual custody with Talin, who could witness its \nexistence but not diagnose it. \nCorren supplied the name of an independent specialist and did not contact her. \nEvery useful act now had to pass through the breach without pretending the breach was gone. \nEnding sponsorship also reopened the licensing panel's restrictions. Without a recognized risk \nexaminer, Sere could not enter the parcel depot, receive restricted extracts, or challenge the current \nchannel's medical orders. \n“They will use the gap,” Talin said. \n“I know.” \n“The current actors have not stopped because Corren told the truth.” \n“I know.” \nCorren could restore access with one signature. Sere could preserve it by delaying the boundary \nuntil after the next request. Either choice would make revelation profitable: learn the breach, keep the \nbenefit, address trust later. \nSere surrendered the access cards at the public counter. \nThe clerk asked why three active permissions were being returned at once. Sere wrote sponsoring \nauthority withdrawn by subject. The phrase made autonomy visible and gave the institution a reason \nto question her judgment. She signed it anyway. \nTalin returned her observer cord beside the cards. \nFor the first time since the case became dangerous, neither woman possessed a formal route into \nthe evidence pursuing them. \nCorren took the envelope. \nThe door remained open. \nShe remained outside.";
-const mode = "emotion";
-let voices=[], chunks=[], index=0, speaking=false;
-const voiceSel=document.getElementById('voice'), rate=document.getElementById('rate'), pitch=document.getElementById('pitch');
-const rateVal=document.getElementById('rateVal'), pitchVal=document.getElementById('pitchVal');
-rate.oninput=()=>rateVal.textContent=rate.value; pitch.oninput=()=>pitchVal.textContent=pitch.value;
+
+let voices = [];
+let speaking = false;
+let chunks = [];
+let chunkIndex = 0;
+let selectedSpeed = localStorage.getItem('tfn_speed') || 'current';
 
 function loadVoices(){
- voices=speechSynthesis.getVoices();
- voiceSel.innerHTML='';
- voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' — '+v.lang;voiceSel.appendChild(o);});
- let i=voices.findIndex(v=>/Google UK English Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/Google.*Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en/i.test(v.lang));
- if(i>=0){voiceSel.value=i;document.getElementById('status').textContent='Selected: '+voices[i].name+' — '+voices[i].lang;}
+  voices = speechSynthesis.getVoices();
 }
-speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
 
-function makeChunks(t){
- const paras=t.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
- const out=[];
- for(const p of paras){
-   if(p.length<=850){out.push(p);continue;}
-   const parts=p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g)||[p];
-   let cur='';
-   for(const s of parts){
-      if((cur+' '+s).length>850 && cur){out.push(cur.trim());cur=s;}
-      else cur += (cur?' ':'')+s;
-   }
-   if(cur.trim())out.push(cur.trim());
- }
- return out;
+function bestVoice(){
+  let v = voices.find(v => /Google UK English Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /Google.*Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en/i.test(v.lang));
+  return v || null;
 }
-chunks=makeChunks(rawText);
-const key='TFN_' + "05" + '_pos';
-index=parseInt(localStorage.getItem(key)||'0');
-if(index>=chunks.length)index=0;
-updateProgress();
 
-function modeRate(){
- let r=parseFloat(rate.value);
- if(mode==='resonance')r-=0.025;
- if(mode==='emotion')r-=0.03;
- if(mode==='preview')r-=0.015;
- if(mode==='warmth')r+=0.01;
- return Math.max(.68, Math.min(1.1,r));
+function makeChunks(text){
+  const paras = text.split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+  const out = [];
+  for (const p of paras){
+    if (p.length <= 850){ out.push(p); continue; }
+    const parts = p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g) || [p];
+    let cur = '';
+    for (const s of parts){
+      if ((cur + ' ' + s).length > 850 && cur){
+        out.push(cur.trim());
+        cur = s;
+      } else {
+        cur += (cur ? ' ' : '') + s;
+      }
+    }
+    if (cur.trim()) out.push(cur.trim());
+  }
+  return out;
 }
+
+function baseRateFor(mode){
+  let r = 0.88;
+  if (mode === 'resonance') r -= 0.025;
+  if (mode === 'emotion') r -= 0.03;
+  if (mode === 'preview') r -= 0.015;
+  if (mode === 'warmth') r += 0.01;
+  return r;
+}
+
+function effectiveRate(mode){
+  const base = baseRateFor(mode);
+  if (selectedSpeed === '1.5x') return Math.min(10, base * 1.5);
+  if (selectedSpeed === '2x') return Math.min(10, base * 2);
+  return base;
+}
+
+function setSpeed(v){
+  selectedSpeed = v;
+  localStorage.setItem('tfn_speed', v);
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.speed === v);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => setSpeed(selectedSpeed));
+
+function stopSpeech(){
+  speaking = false;
+  speechSynthesis.cancel();
+}
+
+const trackText = "Chapter 32\n\nThe city conservators would not let Corren touch the copper sleeve. \nThey worked beneath a canvas roof beside the parcel depot while rain lifted grit from the paving. \nThe culvert objects remained in shallow trays packed with their own silt. Sere stood outside the marked \nline. Talin's red observer cord kept her beside Sere. Corren's compromised seal admitted no one. \nThe senior conservator opened the sleeve with wooden wedges. The inward fold held a second layer \nagainst the corroded wall: a narrow strip of mineral paper, far younger than the woven fiber recovered \nbeneath the city. \nIt bore a custody number from the restricted comparison register Corren had defended. \nCorren asked the conservator to stop. \n“On whose authority?” Sere said. \n“The number identifies a protected person.” \n“It identifies a record.” \n“The distinction may not survive opening.” \nCity custody required preservation of the object. Federation privacy required protection of living \nsubjects. Neither rule gave Corren control. \nTalin said, “Read only the handling fields. No designation, location, or relationship description.” \nThe fields had been added fourteen years earlier, when the sleeve was found during a drain repair \nand briefly entered Federation custody. One entry recorded transfer to a restricted surviving anchor \nunder paired seal. A later entry recorded contact requested by I.V., professional examiner. It required a \ncontinuity witness. \nThe witness field carried Sere's professional number. \nHer license had been active but junior then. She remembered no request, no sleeve, no restricted \nperson. \nCorren's countersignature appeared beneath the risk review. \nSere read the date twice. “You knew before Ilyra died.” \n“I knew she requested contact.” \n“You knew she named me.” \n“As continuity witness.” \n“You knew what that function meant.” \nCorren's attention went to the conservator's hands. “I knew what Ilyra believed it meant.” \nThe answer was narrower than denial. \nRecognition came first, unwelcome and exact. Corren had not merely encountered Sere's number in \nthe present inquiry; she had known its older significance well enough to measure risk around it. The \nrecognition should have restored a missing edge to Sere's history. Instead it showed how long that edge \nhad been held beyond her reach. \nSere felt the old professional impulse to reward precision. Corren had answered only what the field \nestablished. That discipline was one of the reasons Sere had trusted her. Now the same discipline \noutlined the betrayal without softening it. Corren could keep every sentence accurate and still have built \nfourteen years in which Sere was the least informed person in decisions about Sere. \nThe handling strip showed that the meeting occurred. Ilyra entered under one seal. A second person \nentered under witness status; the number had been abraded until only its final two digits remained. They \nmatched Sere's. \nAbrasion was not proof. The named request was. \nThe final field recorded comparison consequence observed and immediate separation of all three \nparticipants. Corren had signed that field too. \n“What consequence?” Sere asked. \n“The field cannot be read without the protected annex.” \n“Can you read the annex?” \nCorren waited one beat too long. “I read it then.” \nRain hammered the canvas. A conservator moved a bucket beneath a seam. The work continued \naround the sentence because old material could not wait for private injury. \n“When did you first learn I might be at risk?” Sere asked. \n“That day.” \n“Before or after the meeting?” \n“After.” \n“When did you tell me?” \nCorren did not answer. \nThe hurt found structure. \n“When I reopened Ilyra's case, did you know the relationship between us was operationally \nrelevant?” \n“Yes.” \n“When you selected the incidents in the restricted comparison register?” \n“Yes.” \n“When you watched me connect sites through practices absent from my record?” \n“Yes.” \n“When I surrendered examiner standing without knowing why the channel treated me as a subject?” \nCorren looked at her. “Yes.” \nTalin asked the conservator to seal the handling strip under city custody and record Corren as a \nprior signatory, not present authority. \nThe change fit one line. \nCorren no longer controlled the oldest evidence she recognized. \nThe conservator asked who should receive notice when the strip entered the city catalog. Ordinary \nrules notified every prior signatory. That would alert the restricted office whose current route remained \nunnamed. \nSere could omit Corren and keep the discovery quiet. The omission would repeat the act she was \nexposing: deciding another person's relevant knowledge was too dangerous to permit. \n“Notify her,” Sere said. “And notify Talin.” \n“Observer Senn has no evidence standing.” \n“Then notify her as a named prior custodian.” \nThe city could accept that designation only if Corren certified it. \nCorren signed without asking to recover authority. \nThe conservators lifted the woven strip into a humidity box. A junior worker called measurements \nwhile another recorded them. Their calm voices kept the old material separate from the breach beside it. \n“Did you know the sleeve was here?” Sere asked. \n“No. I knew a restricted object had been returned to place after the meeting. The annex did not \nidentify which object or place.” \n“Did you search?” \n“I was prohibited from reconstructing the route.” \n“And you obeyed.” \n“I believed the prohibition protected the anchor.” \nThe answer limited Corren's knowledge. It also showed how readily she had accepted an authority \nthat denied Sere the same choice. \nRainwater crossed the paving toward the open culvert. The workers stopped to build a ridge of \nsandbags. Sere joined them with her injured hand wrapped in dry cloth. Corren took the opposite end of \na heavy bag. \nThey carried it together because water did not honor broken trust. \nAt the culvert mouth, Sere released first. \n* * * \nThey crossed the market because Sere would not enter the Federation interview room under \nCorren's sponsorship. \nMorning vendors replaced rain-spoiled labels. Talin bought a paper cone of onions, handed Sere \none, realized what she had done, and took it back. \nNeither laughed. \nThey stopped beneath the tram awning. Corren remained an arm's length away, outside the space \nTalin ordinarily left for a colleague. \n“Tell me what you knew,” Sere said. \n“The restricted person had remained stable through separated custody, place-bound practices, and \nlimited contact. Ilyra believed direct relational continuity could repair a gap in one of those supports.” \n“Did it?” \n“Something changed after the meeting.” \n“What?” \n“The anchor anticipated a route that had not been disclosed. You recognized a handling rule absent \nfrom every surviving placement record. Ilyra reported emotional certainty without event recall.” \nNo scene returned. No voice. The absence stayed absent. \n“And you separated us.” \n“I ordered separation of source material and participants. The restricted person stabilized. Your \nanticipations stopped being documented.” \n“Because they stopped?” \n“Because Ilyra removed you from the reporting channel.” \nThe distinction struck harder than accusation. \n“You knew she continued working with me.” \n“I knew she continued assigning you authority. I did not know every contact.” \n“Did you warn her?” \n“Repeatedly.” \n“Did you warn me?” \n“No.” \nA tram arrived. People crowded beneath the awning. Sere stepped away from Corren rather than let \nordinary pressure close the distance between them. \n“Why?” Talin asked. \n“Because directed attention changed outcomes in cases I had seen. People told they might hold \ncontinuity began testing themselves and those around them. Comparison sometimes spread anticipations \nacross separated records and practices. I believed describing the risk to Sere could increase it.” \n“Believed,” Sere said. \n“Yes.” \n“Evidence?” \n“Incomplete cases. Biased selection. Some ordinary suggestion. Some changes I could not explain.” \nCorren did not inflate her certainty to defend herself. It made the breach harder. \n“You decided uncertainty gave you authority over mine.” \n“I decided an undisclosed hazard justified limiting disclosure.” \n“About my work?” \n“About your exposure.” \n“About me.” \nCorren's silence conceded the center. \nAnger arrived without choosing a clean object. It fixed first on Corren, whose caution had become \npossession. Then it turned toward Ilyra, who had apparently treated Sere's authority as transferable into a \ndanger Sere could not now remember accepting. Then it found Sere herself: the earlier Sere who might \nhave agreed, might have trusted, might have asked the wrong narrow question and called the answer \nsufficient. \nShe could prosecute none of those possibilities. Corren's silence established no motive beyond the \nlimits of the record. Ilyra's planning established neither deception nor consent. The blank in Sere's \nmemory established only that she could not recover the terms by which other people still claimed to \nhave acted. Hurt supplied defendants faster than evidence supplied charges. \nIlyra had placed authority in Sere's hands, perhaps without enough explanation. Corren had \nremoved information from them. One had risked dependence. The other had enforced ignorance. \nProtection complicated both and absolved neither. \n“What consequence did your silence have?” Sere asked. \n“You continued linked-site comparison without knowing it might affect you. You treated the \napprenticeship gap as evidence to solve rather than exposure to manage. You consented to restrictions \nwithout the history required to judge them. And you trusted my recommendations as if I had disclosed \nmy material interests.” \nThe confession arrived only after the record made it unavoidable. \n“Material interests?” Talin said. \n“I signed the old separation. If the risk model was wrong, my restrictions helped erase Sere's access \nto her own history. If it was right, my later silence may still have increased the harm by leaving Ilyra to \nmanage it alone.” \n“You do not get to call the choice necessary,” Sere said. “You can call it yours.” \nCorren accepted the sentence. \n* * * \nAt Talin's review room, the physical key no longer admitted Corren. \nSere had changed the evidence designation from sponsored medical review to subject-held \ncontinuity inquiry. The change ended Corren's formal access and the exception that allowed Talin to act \nunder her seal. \n“My observer standing terminates with sponsorship,” Talin said. \n“I know.” \n“You will have no counsel inside the room.” \n“I know.” \n“This costs you the only review route currently open.” \nSere signed. \nThe deeper answer had taken Corren's authority and Talin's formal presence in the same act. \nThey reconstructed no memory. They compared preserved actions. \nFourteen years earlier, Ilyra requested contact with a restricted surviving anchor and named Sere as \nthe witness whose continuity mattered. Corren reviewed the meeting and documented destabilization \nrisk. Afterward she ordered separation. In the present inquiry, she recognized Sere's network function, \nselected comparison cases, anticipated linked-site risk, and withheld the earlier exposure. \nOne contradiction remained. Corren had told the licensing panel that her register contained cases in \nwhich comparison plausibly altered the evidence environment. The old meeting qualified, yet its \naggregate had been excluded. \n“Why?” Sere asked through the open door. \nCorren stood in the corridor and did not cross the boundary. \n“Ilyra challenged the classification. She argued the meeting exposed a preexisting relation rather \nthan creating a new effect. The panel sealed the case as unresolved.” \n“You selected the denominator.” \n“Yes.” \n“You omitted the case that most directly concerned me.” \n“Yes.” \n“Because disclosure might change me.” \n“And because including a disputed case as evidence of hazard would have been methodologically \nfalse.” \nTwo reasons. One defensible. One unreviewable. The breach lived where Corren had made both \ndecisions alone. \nTalin placed the old incident form on the threshold. \n“Did you know Sere was part of Ilyra's anchor network?” \n“I knew Ilyra treated her as operationally necessary across separated supports.” \n“Did you know instability could move toward her?” \n“I knew the meeting created that risk. I did not know whether it had.” \n“What did I know when I entered?” Sere asked. \n“The request described a continuity consultation. Ilyra said you had agreed to witness disputed \nhandling.” \n“Did you verify my agreement?” \n“No.” \n“Why?” \n“Ilyra held your reciprocal professional authorization. At the time, I treated that as sufficient.” \n“For ordinary custody.” \n“Yes.” \n“This was not ordinary custody.” \n“No.” \nCorren had relied on Ilyra where risk required her to ask Sere. Later she relied on risk where \nautonomy required her to tell Sere. In both directions, someone else had decided what Sere's consent \ncould carry. \nWhat she had lost was not only memory of an event. She had lost custody of the person whose \nchoices still constrained the present. If that earlier woman had consented, Sere could not ask what she \nhad understood, how long she had agreed to be bound, or what condition would have ended the \nagreement. If she had refused, Sere could not produce the refusal. Either possibility existed now as \nmaterial other people could invoke and she could not examine from inside her own life. \nThe unfairness tempted her toward an easy correction: treat every undocumented choice as \ncoercion, every silence as proof of concealment, every later protection as evidence that Ilyra had known \nthe original act was wrong. The correction would return moral custody by inventing evidentiary custody. \nSere recognized the bargain because institutions made it whenever a clean finding mattered more than a \ndamaged source. \nShe let the anger remain divided. Corren had withheld. Ilyra had arranged. Sere might once have \nagreed. The system had allowed reciprocal professional authority to stand in for a present question. \nThose facts and possibilities did not cancel one another, and none authorized her to manufacture the \nmissing answer. \nThe protected strip humiliated Sere more than an accusation would have. Other people possessed \nthe route by which she had once known Ilyra, while Sere held only its consequences. Anger moved \ntoward Corren, then toward Ilyra, then back toward the woman Sere had been and could not question. \nShe could not know whether she had consented to controlled contact, to reciprocal risk, or to the \nlater separation. A missing consent record did not prove refusal. A surviving authority did not bind the \npresent. \nCorren declined to characterize what Sere and Ilyra had been to one another. \nSere wanted the secrecy itself to become proof. \nShe stopped. \n“Record the refusal.” \nTalin recorded it without motive. Sere's pain remained real and non-evidentiary. \nTalin asked whether Corren spoke with Sere after the separation. \n“I conducted a routine exposure interview under a general placement review.” \n“You questioned her without disclosing the event being assessed.” \n“Yes.” \nSere remembered no interview. She remembered a season of forms appearing without cases \nattached and irritation at being asked whether familiar corridors felt altered. The emotional fit returned \nwithout a scene. She did not promote it to memory. \n“What did I answer?” \n“No undisclosed anticipation. No unexplained recognition. You reported dreams about unfinished \nwork but refused to classify them as evidence.” \nThat sounded like Sere. It did not give the interview back to her. \nThe likeness was intimate in the worst way. Corren possessed a sentence shaped like Sere's mind, \ndated to a season Sere could not enter. For an instant she wanted to claim it as continuity: proof that the \nwoman in the forms was still here. Then she wanted to reject it because Corren had preserved it. Neither \ndesire altered custody. A recognizable method was not a recovered memory, and an adversarial custodian \ndid not make an authentic record false. \n“And you concluded?” \n“No active effect established. Continued observation without direct prompts.” \n“How long?” \n“Six months.” \n“You did not merely withhold a warning,” Sere said. “You converted my ordinary life into a risk \nrecord.” \n“Yes.” \n“Did Ilyra know?” \n“She discovered it in the fourth month and ended my access.” \nThe old objection had been more than methodological dispute. Ilyra had stopped Corren from \nwatching Sere without consent. \nSere gained one fact about Ilyra and lost the ability to receive it cleanly. Ilyra had protected her after \nhelping place her at risk. \nBetrayal and protection occupied the same act without resolving each other. Sere could not turn \nIlyra's intervention into absolution; four months of observation had already happened. She could not \nturn the earlier risk into proof that Ilyra had knowingly sacrificed her. Other people held both pieces. \nSere received them as findings about her own past and still lacked standing to question the woman at \ntheir center. \nMethod returned because nothing else could give the loss a boundary. Sere separated the \nauthenticated objection, Corren's account of its timing, and the meaning she wanted to assign. She could \ncertify that Ilyra ended access. She could infer that consent mattered to the objection. She could not \ncertify why Ilyra waited, what she had known at the meeting, or what she would have called the relation \nbetween them. \n“Did you withhold that material truth while she made decisions about contact, comparison, and \nstanding?” \n“Yes.” \nSere removed Corren's risk seal from the active file. The wax broke cleanly. She placed both pieces \nin a plain envelope and returned it across the threshold. \n“You may submit evidence. You may not classify my access to it.” \n“May I continue medical monitoring if you request it?” Corren asked. \nThe careful conditional arrived too late to be neutral. \n“No.” \nThe answer cost Sere the only practitioner in reach who understood restricted-anchor risk. She \naccepted the exposure rather than let necessity erase the boundary she had made. \nTalin wrote the refusal into the open record. “Sere declines Corren's monitoring. She does not \ndecline care.” \n“I did not ask you to qualify it.” \n“The institution will otherwise record that you refused all care.” \nSere read the sentence. Talin was protecting process, not interpreting feeling. \n“Keep it.” \nThey requested ordinary baseline care from a city physician with no restricted-case authority. Until \nthe appointment, Sere would hold her symptom log under dual custody with Talin, who could witness its \nexistence but not diagnose it. \nCorren supplied the name of an independent specialist and did not contact her. \nEvery useful act now had to pass through the breach without pretending the breach was gone. \nEnding sponsorship also reopened the licensing panel's restrictions. Without a recognized risk \nexaminer, Sere could not enter the parcel depot, receive restricted extracts, or challenge the current \nchannel's medical orders. \n“They will use the gap,” Talin said. \n“I know.” \n“The current actors have not stopped because Corren told the truth.” \n“I know.” \nCorren could restore access with one signature. Sere could preserve it by delaying the boundary \nuntil after the next request. Either choice would make revelation profitable: learn the breach, keep the \nbenefit, address trust later. \nSere surrendered the access cards at the public counter. \nThe clerk asked why three active permissions were being returned at once. Sere wrote sponsoring \nauthority withdrawn by subject. The phrase made autonomy visible and gave the institution a reason \nto question her judgment. She signed it anyway. \nTalin returned her observer cord beside the cards. \nFor the first time since the case became dangerous, neither woman possessed a formal route into \nthe evidence pursuing them. \nCorren took the envelope. \nThe door remained open. \nShe remained outside.";
+const trackMode = "emotion";
+const storageKey = 'tfn_05_pos';
+
+function updateStatus(msg){ document.getElementById('status').textContent = msg; }
+function updateBar(){
+  const pct = (chunkIndex / Math.max(1, chunks.length)) * 100;
+  document.getElementById('bar').style.width = pct + '%';
+}
+
+function announceVoice(){
+  const v = bestVoice();
+  if (v) {
+    document.getElementById('voiceStatus').textContent = 'Voice in use: ' + v.name + ' — ' + v.lang;
+  }
+}
+
 function speakNext(){
- if(index>=chunks.length){speaking=false;index=0;localStorage.setItem(key,'0');updateProgress();document.getElementById('status').textContent='Finished';return;}
- const u=new SpeechSynthesisUtterance(chunks[index]);
- const v=voices[parseInt(voiceSel.value)];
- if(v)u.voice=v;
- u.rate=modeRate();u.pitch=parseFloat(pitch.value);u.volume=1;
- u.onend=()=>{index++;localStorage.setItem(key,String(index));updateProgress();if(speaking)setTimeout(speakNext, mode==='preview'?700:450);};
- u.onerror=()=>{speaking=false;document.getElementById('status').textContent='Playback interrupted — press Play to resume';};
- speechSynthesis.speak(u);
+  if (chunkIndex >= chunks.length){
+    speaking = false;
+    chunkIndex = 0;
+    localStorage.setItem(storageKey, '0');
+    updateBar();
+    updateStatus('Finished');
+    return;
+  }
+  const utter = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+  const v = bestVoice();
+  if (v) utter.voice = v;
+  utter.rate = effectiveRate(trackMode);
+  utter.pitch = 0.90;
+  utter.volume = 1;
+  utter.onend = () => {
+    chunkIndex++;
+    localStorage.setItem(storageKey, String(chunkIndex));
+    updateBar();
+    if (speaking) setTimeout(speakNext, trackMode === 'preview' ? 650 : 420);
+  };
+  utter.onerror = () => {
+    speaking = false;
+    updateStatus('Playback interrupted — press Play to continue');
+  };
+  speechSynthesis.speak(utter);
 }
-function play(){if(speechSynthesis.paused){speechSynthesis.resume();return;} if(speaking)return; speaking=true; speakNext();}
-function toggle(){if(speechSynthesis.speaking){if(speechSynthesis.paused)speechSynthesis.resume();else speechSynthesis.pause();}}
-function stopSpeech(){speaking=false;speechSynthesis.cancel();}
-function restart(){stopSpeech();index=0;localStorage.setItem(key,'0');updateProgress();}
-function updateProgress(){document.getElementById('bar').style.width=((index/Math.max(1,chunks.length))*100)+'%';}
+
+function play(){
+  announceVoice();
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); return; }
+  if (speaking) return;
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  speaking = true;
+  updateStatus('Playing');
+  speakNext();
+}
+
+function togglePlay(){
+  if (!speechSynthesis.speaking) return;
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); }
+  else { speechSynthesis.pause(); updateStatus('Paused'); }
+}
+
+function restartTrack(){
+  stopSpeech();
+  chunks = makeChunks(trackText);
+  chunkIndex = 0;
+  localStorage.setItem(storageKey, '0');
+  updateBar();
+  play();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  announceVoice();
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  updateBar();
+});
 </script>
-</body></html>
+</body>
+</html>

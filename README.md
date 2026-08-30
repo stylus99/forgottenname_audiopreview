@@ -1,19 +1,14 @@
 # The Forgotten Name — Private Audio Preview
 
-Private narrator test for selected readers.
+This repository hosts the private audio-preview player for *The Forgotten Name* by CL Harris.
 
-Open the published GitHub Pages URL to listen.
-
-Tracks:
+## Included
+- Responsive landing page with cover art
 - Back-cover preview
-- Chapter 1 — Baseline
-- Chapter 20 — Warmth
-- Chapter 23 — Procedure
-- Chapter 17 — Resonance
-- Chapter 32 — Emotion
+- Five selected chapter samples
+- Automatic browser voice selection, preferring Google UK English Female — en-GB
+- Simplified listener controls
+- Playback speed options: Current, 1.5x, and 2x
 
-Preferred browser voice:
-Google UK English Female — en-GB
-
-Author: CL HARRIS
-Website: ForgottenName.com
+## Notes
+These pages use the browser's speech-synthesis engine and do not contain prerecorded MP3 files.

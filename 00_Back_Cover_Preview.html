@@ -5,45 +5,108 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Back-Cover Preview — The Forgotten Name</title>
 <style>
-:root{--bg:#0d0f13;--panel:#16191f;--line:#292e38;--text:#f0f2f5;--muted:#aeb5c0;--accent:#d1c19a}
+:root{
+  --bg:#0b0d11;
+  --panel:#141821;
+  --panel2:#1a1f2a;
+  --line:#2b313e;
+  --text:#f0f2f5;
+  --muted:#b1b7c1;
+  --accent:#d0c09a;
+  --button:#262c38;
+  --button2:#39311f;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Georgia,"Times New Roman",serif;line-height:1.64}
-.wrap{max-width:900px;margin:auto;padding:28px 18px 80px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
-h1{font-size:1.8rem;margin:0} h2{color:var(--accent);font-size:1.15rem;font-weight:normal;margin:.35rem 0 1.2rem}
-.controls{position:sticky;top:0;background:rgba(22,25,31,.97);padding:12px 0;z-index:3}
-button{background:#252a34;color:white;border:1px solid #3a414e;border-radius:9px;padding:10px 13px;margin:4px;cursor:pointer}
-button.primary{background:#493f2f}
-select,input{width:100%;margin:5px 0 12px}
-select{background:#0e1116;color:white;border:1px solid var(--line);padding:9px;border-radius:7px}
-.grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:12px}
-@media(max-width:700px){.grid{grid-template-columns:1fr}}
-.status{color:var(--accent);margin:8px 0}
-.small{color:var(--muted);font-size:.9rem}
-.text{white-space:pre-wrap;margin-top:24px}
-.progress{height:5px;background:#252a34;border-radius:5px;overflow:hidden;margin-top:10px}
-.bar{height:100%;width:0;background:#9e9377}
+body{
+  margin:0;
+  background:linear-gradient(180deg,#0b0d11 0%, #111621 100%);
+  color:var(--text);
+  font-family:Georgia, "Times New Roman", serif;
+  line-height:1.65;
+}
+a{color:#e3d3ad}
+.wrap{max-width:1060px;margin:0 auto;padding:24px 16px 70px}
+.panel{background:rgba(20,24,33,.96);border:1px solid var(--line);border-radius:18px;padding:20px}
+.hero{display:grid;grid-template-columns:320px 1fr;gap:24px;align-items:start}
+.hero img{width:100%;height:auto;border-radius:12px;border:1px solid #3a3f4a;box-shadow:0 14px 40px rgba(0,0,0,.35)}
+@media (max-width:850px){.hero{grid-template-columns:1fr}.hero img{max-width:380px}}
+.kicker{letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-size:.9rem}
+h1{font-size:2.1rem;margin:.25rem 0 .2rem}
+h2{font-size:1.2rem;margin:0 0 .8rem;color:var(--accent);font-weight:normal}
+p.lead{font-size:1.04rem;color:var(--muted);margin-top:.2rem}
+.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+button,.speed-btn{
+  background:var(--button);
+  color:var(--text);
+  border:1px solid #40485a;
+  border-radius:10px;
+  padding:10px 14px;
+  cursor:pointer;
+  font:inherit;
+}
+button.primary{background:var(--button2);border-color:#65583f}
+button:hover,.speed-btn:hover{filter:brightness(1.08)}
+.speed-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.speed-btn.active{background:#50452f;border-color:#7a6c4b}
+.small{font-size:.92rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr;gap:14px;margin-top:18px}
+.track{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  gap:14px;
+  align-items:center;
+  background:rgba(26,31,42,.9);
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:14px;
+}
+.track-num{
+  width:42px;height:42px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  border:1px solid #4a5161;color:var(--accent);font-weight:bold
+}
+.track-title{font-size:1.06rem}
+.track-sub{font-size:.92rem;color:var(--muted)}
+.current-track{margin:14px 0 6px;color:var(--accent)}
+.progress{height:7px;background:#252c38;border-radius:999px;overflow:hidden}
+.bar{height:100%;width:0;background:#bca77a}
+.text{white-space:pre-wrap;margin-top:18px}
+.topbar{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:14px}
+.inline-note{font-size:.92rem;color:var(--muted)}
+.link-btn{display:inline-block;text-decoration:none}
 </style>
 </head>
 <body>
-<div class="wrap"><div class="card">
-<h1>THE FORGOTTEN NAME</h1>
-<h2>Back-Cover Preview · By CL HARRIS</h2>
-<div class="controls">
-<div class="grid">
-<div><label>Voice</label><select id="voice"></select></div>
-<div><label>Rate <span id="rateVal">0.88</span></label><input id="rate" type="range" min="0.72" max="1.05" step="0.01" value="0.88"></div>
-<div><label>Pitch <span id="pitchVal">0.90</span></label><input id="pitch" type="range" min="0.75" max="1.05" step="0.01" value="0.90"></div>
-</div>
-<button class="primary" onclick="play()">▶ Play</button>
-<button onclick="toggle()">⏯ Pause / Resume</button>
-<button onclick="stopSpeech()">■ Stop</button>
-<button onclick="restart()">↺ Restart</button>
-<div class="status" id="status">Preferred: Google UK English Female — en-GB</div>
-<div class="progress"><div class="bar" id="bar"></div></div>
-<div class="small">Narration profile: intimate, restrained, measured; no suspense-style clue emphasis. Playback position is saved on this device.</div>
-</div>
-<div class="text">THE FORGOTTEN NAME
+<div class="wrap">
+  <div class="panel">
+    <div class="topbar">
+      <a class="link-btn" href="index.html">← Back to preview home</a>
+      <div class="speed-group">
+        <span class="small">Speed</span>
+        <button class="speed-btn" data-speed="current" onclick="setSpeed('current')">Current</button>
+        <button class="speed-btn" data-speed="1.5x" onclick="setSpeed('1.5x')">1.5x</button>
+        <button class="speed-btn" data-speed="2x" onclick="setSpeed('2x')">2x</button>
+      </div>
+    </div>
+    <div class="hero">
+      <div><img src="cover.jpg" alt="The Forgotten Name cover art"></div>
+      <div>
+        <div class="kicker">Private Audio Preview</div>
+        <h1>THE FORGOTTEN NAME</h1>
+        <h2>Back-Cover Preview · By CL HARRIS</h2>
+        <p class="lead">Back-cover preview and first-listen hook</p>
+        <div class="controls">
+          <button class="primary" onclick="play()">▶ Play</button>
+          <button onclick="togglePlay()">⏯ Pause / Resume</button>
+          <button onclick="restartTrack()">↺ Restart</button>
+          <button onclick="stopSpeech()">■ Stop</button>
+        </div>
+        <div class="current-track" id="status">Ready to play</div>
+        <div class="progress"><div class="bar" id="bar"></div></div>
+        <p class="small" id="voiceStatus">The player will automatically choose the best available English voice, preferring Google UK English Female — en-GB.</p>
+      </div>
+    </div>
+    <div class="text">THE FORGOTTEN NAME
 By CL HARRIS
 
 Ilyra Venn is dead, and her life will not stop working.
@@ -65,70 +128,160 @@ Some things are forgotten because they no longer matter.
 Sere is beginning to suspect Ilyra Venn was erased because she still does.
 
 Discover more about The Forgotten Name at ForgottenName.com.</div>
-</div></div>
+  </div>
+</div>
 <script>
-const rawText = "THE FORGOTTEN NAME\nBy CL HARRIS\n\nIlyra Venn is dead, and her life will not stop working.\n\nRent still clears. A child is still collected from school. An old man still receives care in her name—and no one who benefits from any of it can quite say who she was.\n\nSere Arden examines the dead for a living. She tests evidence, exposes contradiction, and certifies what a record can bear. It is careful work, built on the conviction that what happened leaves something behind.\n\nBut Ilyra Venn's case refuses to behave like evidence should.\n\nA damaged record. A contradiction where none should exist. Obligations that continue without anyone remembering the woman who created them. And everywhere Sere looks, the same impossible absence: Ilyra's life has left consequences behind, while Ilyra herself is disappearing from the world that still depends on them.\n\nThen the case begins reaching into Sere's own life.\n\nThe closer she comes to understanding what happened to Ilyra, the harder it becomes to trust the certainties on which she has built her work—and herself.\n\nSome things are forgotten because they no longer matter.\n\nSere is beginning to suspect Ilyra Venn was erased because she still does.\n\nDiscover more about The Forgotten Name at ForgottenName.com.";
-const mode = "preview";
-let voices=[], chunks=[], index=0, speaking=false;
-const voiceSel=document.getElementById('voice'), rate=document.getElementById('rate'), pitch=document.getElementById('pitch');
-const rateVal=document.getElementById('rateVal'), pitchVal=document.getElementById('pitchVal');
-rate.oninput=()=>rateVal.textContent=rate.value; pitch.oninput=()=>pitchVal.textContent=pitch.value;
+
+let voices = [];
+let speaking = false;
+let chunks = [];
+let chunkIndex = 0;
+let selectedSpeed = localStorage.getItem('tfn_speed') || 'current';
 
 function loadVoices(){
- voices=speechSynthesis.getVoices();
- voiceSel.innerHTML='';
- voices.forEach((v,i)=>{const o=document.createElement('option');o.value=i;o.textContent=v.name+' — '+v.lang;voiceSel.appendChild(o);});
- let i=voices.findIndex(v=>/Google UK English Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/Google.*Female/i.test(v.name)&&/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en-GB/i.test(v.lang));
- if(i<0)i=voices.findIndex(v=>/^en/i.test(v.lang));
- if(i>=0){voiceSel.value=i;document.getElementById('status').textContent='Selected: '+voices[i].name+' — '+voices[i].lang;}
+  voices = speechSynthesis.getVoices();
 }
-speechSynthesis.onvoiceschanged=loadVoices; loadVoices();
+speechSynthesis.onvoiceschanged = loadVoices;
+loadVoices();
 
-function makeChunks(t){
- const paras=t.split(/\n\s*\n/).map(x=>x.trim()).filter(Boolean);
- const out=[];
- for(const p of paras){
-   if(p.length<=850){out.push(p);continue;}
-   const parts=p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g)||[p];
-   let cur='';
-   for(const s of parts){
-      if((cur+' '+s).length>850 && cur){out.push(cur.trim());cur=s;}
-      else cur += (cur?' ':'')+s;
-   }
-   if(cur.trim())out.push(cur.trim());
- }
- return out;
+function bestVoice(){
+  let v = voices.find(v => /Google UK English Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /Google.*Female/i.test(v.name) && /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en-GB/i.test(v.lang));
+  if (!v) v = voices.find(v => /^en/i.test(v.lang));
+  return v || null;
 }
-chunks=makeChunks(rawText);
-const key='TFN_' + "00" + '_pos';
-index=parseInt(localStorage.getItem(key)||'0');
-if(index>=chunks.length)index=0;
-updateProgress();
 
-function modeRate(){
- let r=parseFloat(rate.value);
- if(mode==='resonance')r-=0.025;
- if(mode==='emotion')r-=0.03;
- if(mode==='preview')r-=0.015;
- if(mode==='warmth')r+=0.01;
- return Math.max(.68, Math.min(1.1,r));
+function makeChunks(text){
+  const paras = text.split(/\n\s*\n/).map(x => x.trim()).filter(Boolean);
+  const out = [];
+  for (const p of paras){
+    if (p.length <= 850){ out.push(p); continue; }
+    const parts = p.match(/[^.!?]+[.!?]+(?:["”’']+)?|[^.!?]+$/g) || [p];
+    let cur = '';
+    for (const s of parts){
+      if ((cur + ' ' + s).length > 850 && cur){
+        out.push(cur.trim());
+        cur = s;
+      } else {
+        cur += (cur ? ' ' : '') + s;
+      }
+    }
+    if (cur.trim()) out.push(cur.trim());
+  }
+  return out;
 }
+
+function baseRateFor(mode){
+  let r = 0.88;
+  if (mode === 'resonance') r -= 0.025;
+  if (mode === 'emotion') r -= 0.03;
+  if (mode === 'preview') r -= 0.015;
+  if (mode === 'warmth') r += 0.01;
+  return r;
+}
+
+function effectiveRate(mode){
+  const base = baseRateFor(mode);
+  if (selectedSpeed === '1.5x') return Math.min(10, base * 1.5);
+  if (selectedSpeed === '2x') return Math.min(10, base * 2);
+  return base;
+}
+
+function setSpeed(v){
+  selectedSpeed = v;
+  localStorage.setItem('tfn_speed', v);
+  document.querySelectorAll('.speed-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.speed === v);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => setSpeed(selectedSpeed));
+
+function stopSpeech(){
+  speaking = false;
+  speechSynthesis.cancel();
+}
+
+const trackText = "THE FORGOTTEN NAME\nBy CL HARRIS\n\nIlyra Venn is dead, and her life will not stop working.\n\nRent still clears. A child is still collected from school. An old man still receives care in her name—and no one who benefits from any of it can quite say who she was.\n\nSere Arden examines the dead for a living. She tests evidence, exposes contradiction, and certifies what a record can bear. It is careful work, built on the conviction that what happened leaves something behind.\n\nBut Ilyra Venn's case refuses to behave like evidence should.\n\nA damaged record. A contradiction where none should exist. Obligations that continue without anyone remembering the woman who created them. And everywhere Sere looks, the same impossible absence: Ilyra's life has left consequences behind, while Ilyra herself is disappearing from the world that still depends on them.\n\nThen the case begins reaching into Sere's own life.\n\nThe closer she comes to understanding what happened to Ilyra, the harder it becomes to trust the certainties on which she has built her work—and herself.\n\nSome things are forgotten because they no longer matter.\n\nSere is beginning to suspect Ilyra Venn was erased because she still does.\n\nDiscover more about The Forgotten Name at ForgottenName.com.";
+const trackMode = "preview";
+const storageKey = 'tfn_00_pos';
+
+function updateStatus(msg){ document.getElementById('status').textContent = msg; }
+function updateBar(){
+  const pct = (chunkIndex / Math.max(1, chunks.length)) * 100;
+  document.getElementById('bar').style.width = pct + '%';
+}
+
+function announceVoice(){
+  const v = bestVoice();
+  if (v) {
+    document.getElementById('voiceStatus').textContent = 'Voice in use: ' + v.name + ' — ' + v.lang;
+  }
+}
+
 function speakNext(){
- if(index>=chunks.length){speaking=false;index=0;localStorage.setItem(key,'0');updateProgress();document.getElementById('status').textContent='Finished';return;}
- const u=new SpeechSynthesisUtterance(chunks[index]);
- const v=voices[parseInt(voiceSel.value)];
- if(v)u.voice=v;
- u.rate=modeRate();u.pitch=parseFloat(pitch.value);u.volume=1;
- u.onend=()=>{index++;localStorage.setItem(key,String(index));updateProgress();if(speaking)setTimeout(speakNext, mode==='preview'?700:450);};
- u.onerror=()=>{speaking=false;document.getElementById('status').textContent='Playback interrupted — press Play to resume';};
- speechSynthesis.speak(u);
+  if (chunkIndex >= chunks.length){
+    speaking = false;
+    chunkIndex = 0;
+    localStorage.setItem(storageKey, '0');
+    updateBar();
+    updateStatus('Finished');
+    return;
+  }
+  const utter = new SpeechSynthesisUtterance(chunks[chunkIndex]);
+  const v = bestVoice();
+  if (v) utter.voice = v;
+  utter.rate = effectiveRate(trackMode);
+  utter.pitch = 0.90;
+  utter.volume = 1;
+  utter.onend = () => {
+    chunkIndex++;
+    localStorage.setItem(storageKey, String(chunkIndex));
+    updateBar();
+    if (speaking) setTimeout(speakNext, trackMode === 'preview' ? 650 : 420);
+  };
+  utter.onerror = () => {
+    speaking = false;
+    updateStatus('Playback interrupted — press Play to continue');
+  };
+  speechSynthesis.speak(utter);
 }
-function play(){if(speechSynthesis.paused){speechSynthesis.resume();return;} if(speaking)return; speaking=true; speakNext();}
-function toggle(){if(speechSynthesis.speaking){if(speechSynthesis.paused)speechSynthesis.resume();else speechSynthesis.pause();}}
-function stopSpeech(){speaking=false;speechSynthesis.cancel();}
-function restart(){stopSpeech();index=0;localStorage.setItem(key,'0');updateProgress();}
-function updateProgress(){document.getElementById('bar').style.width=((index/Math.max(1,chunks.length))*100)+'%';}
+
+function play(){
+  announceVoice();
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); return; }
+  if (speaking) return;
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  speaking = true;
+  updateStatus('Playing');
+  speakNext();
+}
+
+function togglePlay(){
+  if (!speechSynthesis.speaking) return;
+  if (speechSynthesis.paused) { speechSynthesis.resume(); updateStatus('Playing'); }
+  else { speechSynthesis.pause(); updateStatus('Paused'); }
+}
+
+function restartTrack(){
+  stopSpeech();
+  chunks = makeChunks(trackText);
+  chunkIndex = 0;
+  localStorage.setItem(storageKey, '0');
+  updateBar();
+  play();
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  announceVoice();
+  chunks = makeChunks(trackText);
+  const saved = parseInt(localStorage.getItem(storageKey) || '0', 10);
+  if (!Number.isNaN(saved) && saved >= 0 && saved < chunks.length) chunkIndex = saved;
+  updateBar();
+});
 </script>
-</body></html>
+</body>
+</html>
